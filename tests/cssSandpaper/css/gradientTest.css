@@ -1,0 +1,89 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+#o1 {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 100px;
+	height: 200px;
+	padding: 10px;
+	background: red;
+	background-image: -sand-gradient(linear, center top, center bottom, from(#ff0000), to(#ffcccc));
+	-sand-transform: rotate(45deg);
+	
+}
+
+#o2 {
+	position: absolute;
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	background: -sand-gradient(linear, left top, right top, from(#cccccc), to(#ffcccc));
+	border: solid 1px blue;
+	top: 10em;
+	left: 13em;
+	background: red;
+	width: 200px;
+	height: 300px;
+	padding: 1em;
+	-sand-transform: rotate(-45deg) skew(0deg, 20deg);
+}
+
+.relative {
+	position: relative;
+	top: 100px;
+	left: 100px;
+}
+
+
+
+.absolute {
+	position: absolute;
+	top: 30px;
+	left: 22px;
+}
+
+.relative .absolute div {
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	-sand-transform: rotate(30deg);
+	background-image: -sand-gradient(radial, 40% 40%, 0, 40% 40%, 60, from(#ffffa2), to(#00f));
+	width: 200px;
+	height: 200px;
+	position: relative;
+	left: 400px;
+	padding: 10px;
+}
+
+#rainbow {
+	padding: 10px;
+	color: white;
+	font-weight: bold;
+	border: solid 1px black;
+	margin: 10px;
+	position: absolute;
+	top: 400px;
+	left: 0px;
+	width: 300px;
+	height: 400px;
+	background: #ff0000;
+	background-image: -sand-gradient(linear, left top, right bottom, color-stop(0, #cccccc), color-stop(0.5, #0000ff), color-stop(1, #ff0000));
+}
+
+#multiStopRadial {
+	position: absolute;
+	top: 300px;
+	left: 0px;
+	border: solid 1px black;
+	margin: 10px;
+	width: 300px;
+	height: 400px;
+	background: #ffffff;
+				background-image: -sand-gradient(radial, 40% 40%, 0, 40% 40%, 60, color-stop(0, #cccccc), color-stop(0.5, #00ff00), color-stop(1, #ff0000));
+}

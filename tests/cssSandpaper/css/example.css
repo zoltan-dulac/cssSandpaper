@@ -1,0 +1,102 @@
+@import "/shared/css/reset.css";
+
+body {
+	font-family: "Arial", "Helvetica", sans-serif;
+	font-size: 0.8em;
+	margin: 1em;
+	background: url(../images/stars.jpg) black;
+	color: white;
+}
+
+
+
+#tokyoPic {
+	margin-left: -40px;
+	margin-top: 55px;
+	-sand-box-shadow: 5px 5px #ffffff;
+	-sand-transform: scale(0.5) skew(-40deg, 0deg);
+	position: absolute;
+	z-index: 1;
+	
+}
+
+#transformed {
+	color: black;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: solid 1px blue;
+	background: #ffffcc;
+	width: 300px;
+	height: 300px;	
+	padding: 10px;
+	font-size: 100px;
+	margin: 20px;
+	-sand-transform: scale(1, 0.5) skew(20deg, 1deg) rotate(60deg) skew(200deg, 200deg) ;
+	z-index: 2; 
+}
+
+.fakeItalic {
+	position: absolute;
+	-sand-transform: skew(20deg, 0deg);
+	left: 0;
+	top: 0;
+	font-size: 55px;
+	z-index: 3;
+	color: red;
+}
+
+.another {
+	font-size: 50px;
+	position: relative;
+	top: 200px;
+	left: 500px;
+}
+
+.another .fakeItalic {
+	position: relative;
+}
+
+#scroller {
+	position: absolute;
+	color: black;
+	left: 600px;
+	top: 300px;
+	background: white;
+	width: 600px;
+	height: 200px;
+	overflow: scroll;
+	padding: 1em;
+	-sand-transform: skew(40deg, -20deg);
+	background-image: -sand-gradient(linear, center top, center bottom, from(#ffffff), to(#0000ff));
+}
+
+#radial {
+	position: absolute;
+	left: 30%;
+	top: 20%;
+	z-index: 30;
+	width: 100px;
+	height: 100px;
+	background: white;
+	border: solid red 3px;
+	color: black;
+	padding: 30px;
+	font-size: 1em;
+	background-image: -sand-gradient(radial, 40% 40%, 0, 40% 40%, 60, from(#ffffa2), to(#00f));
+}
+
+#scroller p {
+	margin-bottom: 1em;
+}
+
+#scroller dt {
+	font-weight: bold;
+}
+
+#scroller dd {
+	margin-left: 2em;
+	margin-bottom: 1em;
+	
+}
+

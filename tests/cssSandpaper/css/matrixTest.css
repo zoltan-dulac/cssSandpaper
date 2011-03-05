@@ -1,0 +1,18 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+#o1 {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 300px;
+	height: 100px;
+	padding: 10px;
+	background-color: white;
+	-sand-transform: matrix(0.9848077530122079, 0.17364817766693127, -0.17364817766693127, 0.9848077530122079, 2, 33);
+}

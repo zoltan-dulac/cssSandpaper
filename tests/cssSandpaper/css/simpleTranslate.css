@@ -1,0 +1,39 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+#o1, #o2 {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 150px;
+	height: 100px;
+	padding: 10px;
+	background-color: white;
+	
+}
+
+#o2 {
+	-sand-transform: translate(200px, 0);
+}
+
+#o3, #o4 {
+	position: absolute;
+	top: 125px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 150px;
+	height: 100px;
+	padding: 10px;
+	background-color: red;
+	-sand-transform: rotate(45deg);
+}
+
+#o4 {
+	-sand-transform: rotate(45deg) translate(200px, 0);
+}

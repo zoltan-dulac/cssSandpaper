@@ -1,0 +1,38 @@
+body {
+	background: black;
+	font-family: Verdana, sans-serif;
+	font-size: 0.7em;
+}
+
+fieldset {
+	width: 33%;
+	float: left;	
+}
+
+#content {
+	margin: 1em;
+	border: #cccccc;
+	background: white;
+	padding: 1em;
+		background-image: -sand-gradient(linear, center top, center bottom, from(#cccccc), to(#eeeeee));
+	
+}
+
+#testArea {
+	border: solid 1px #cccccc;
+	height: 15em;
+	background-image: -sand-gradient(linear, center top, center bottom, from(#ff0000), to(#ffcccc));
+}
+
+#testSubject {
+	border: solid 1px black;
+	margin: 1em auto;
+	display: block;
+	width: 10em;
+	height: 10em;
+	padding: 1em;
+}
+
+.clearAll {
+	clear: both
+}

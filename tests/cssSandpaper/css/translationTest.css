@@ -1,0 +1,34 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+#o1, #o2, #o3, #o4 {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 100px;
+	height: 180px;
+	padding: 10px;
+	background-color: white;
+	
+}
+
+#o1 {
+	-sand-transform: rotate(45deg);
+}
+
+#o2 {
+	-sand-transform: rotate(45deg) skew(45deg, 0deg) translate(200px, 0px);
+}
+
+#o3 {
+	-sand-transform: rotate(45deg) skew(45deg, 0deg) translate(200px, 0px) rotate(45deg);
+}
+
+#o4 {
+	-sand-transform: rotate(45deg) skew(45deg, 0deg) translate(200px, 0px) rotate(45deg) translate(300px, 0px);
+}

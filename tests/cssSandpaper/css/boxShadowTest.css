@@ -1,0 +1,55 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+#o1 {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 400px;
+	height: 100px;
+	padding: 10px;
+	-sand-box-shadow: 15px 15px #ffcccc;
+	background-color: #ffffcc;
+}
+
+#o2 {
+	position: absolute;
+	top: 10em;
+	left: 33em;
+	background-color: red;
+	width: 200px;
+	height: 302px;
+	padding: 20px;
+	-sand-box-shadow: -5px -5px 5px black;
+	background-image: gradient(linear, center top, center bottom, from(#ffffff),
+		 to(#ccccff));
+}
+
+.relative {
+	position: relative;
+	top: 100px;
+	left: 100px;
+}
+
+
+
+
+#o3 {
+	position: absolute;
+	top: 300px;
+	left: 122px;
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	-sand-box-shadow: 15px 5px green;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	left: 400px;
+	padding: 10px;
+}

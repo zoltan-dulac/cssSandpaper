@@ -1,0 +1,12 @@
+version 1.0 (March 9th, 2010) - support for CSS opacity, 
+  transform (except for the translate() function), 
+  box-shadow and WebKit style gradients.
+  
+version 1.0.1 (April 5th, 2010) - support for scripting 
+  of the properties for 1.0
+
+version 1.1 (May 6th, 2010) - support for translation 
+  transformations and rgba() background colors.
+  
+version 1.2 (August 29, 2010) - support for hsl and 
+  hsla color notation.

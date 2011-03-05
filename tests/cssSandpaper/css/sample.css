@@ -1,0 +1,103 @@
+@import "../../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	
+}
+
+sup {
+	font-size: 0.75em;
+	line-height: normal;
+	vertical-align: super;
+}
+
+#tagline {
+	background-color: red;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	width: 15em;
+	height: 4em;
+	padding-top: 3em 1em 1em 1em;
+	position: absolute;
+	top: 1em;
+	left: -4.3em;
+	transform: rotate(-45deg);
+}
+
+#header {
+	color: white;
+	border-bottom: 1px solid black;
+	width: 100%;
+	background-color: blue;
+	background-image: gradient(linear, center top, center bottom, from(black),
+		to(blue) );
+	height: 2em;
+	margin: 0;
+	padding-left: 4em;
+	padding-top: 1em;
+	font-size: 2em;
+}
+
+.alignLeftImg {
+	float: left;
+	width: 300px;
+}
+
+.date {
+	background-color: #987;
+	float: right;
+	margin-top: 10px;
+	position: relative;
+	padding: 45px 5px 0px;
+	margin-left: 10px;
+}
+
+.date .month {
+	text-transform: uppercase;
+	font-size: 25px;
+}
+
+.date .day {
+	font-size: 45px;
+	line-height: 45px;
+	position: absolute;
+	left: 5px;
+	top: 0px;
+}
+
+.date .year {
+	display: block;
+	position: absolute;
+	right: -5px;
+	top: 15px;
+	transform: rotate(-90deg);
+	zoom: 100%;
+}
+
+#content {
+	margin-left: 300px;	
+}
+
+
+#verbage {
+	
+	padding: 10px;
+	
+	color: black;
+	background-image: gradient(linear, center top, center bottom, from(#ffffff), to(#ccccff));
+	transform: skew(1deg, -30deg);
+	margin-top: 6em;
+	width: 20em;
+	height: 5em;
+	border: solid 1px black;
+}
+
+#IETransformContainer {
+	display: block;
+}
+
+
+#orderNow {
+	
+}

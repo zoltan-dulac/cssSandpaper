@@ -1,0 +1,69 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+#o1 {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 400px;
+	height: 100px;
+	padding: 10px;
+	-sand-transform: skew(45deg, 0deg);
+	background-color: #ffffcc;
+}
+
+#o2 {
+	position: absolute;
+	top: 10em;
+	left: 33em;
+	background-color: red;
+	width: 200px;
+	height: 302px;
+	padding: 20px;
+	-sand-transform:  skew(-17deg, 45deg) rotate(-125deg);
+	background-image: gradient(linear, center top, center bottom, from(#ffffff),
+		 to(#ccccff));
+}
+
+.relative {
+	position: relative;
+	top: 100px;
+	left: 100px;
+}
+
+
+
+.absolute {
+	position: absolute;
+	top: 30px;
+	left: 22px;
+}
+
+.relative .absolute div {
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	-sand-transform: rotate(30deg) skew(20deg, 20deg);
+	width: 200px;
+	height: 200px;
+	position: relative;
+	left: 400px;
+	padding: 10px;
+}
+
+#matrixTest { 
+	padding: 10px;
+	position: relative;
+	width: 400px;
+	height: 200px;
+	border: solid 5px red;
+	left: 0px;
+	top: 200px;
+	background: white;
+	-sand-transform: matrix(-1, 0 , 0, 1, 0, 0);
+}

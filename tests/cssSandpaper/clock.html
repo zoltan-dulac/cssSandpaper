@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+		
+    <title>cssSandpaper Animated Clock Demo</title>
+    
+   
+	<script type="text/javascript" src="../../shared/js/EventHelpers.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/cssSandpaper.js">
+	</script>
+	
+	
+	<script type="text/javascript" src="js/clock.js">
+	</script>
+	
+    <style type="text/css">
+        * {
+        	margin: 0;
+        	padding: 0;
+        }
+        
+        #clock {
+        	position: relative;
+        	width: 600px;
+        	height: 600px;
+        	margin: 20px auto 0 auto;
+        	background: url(images/clockface.jpg);
+        	list-style: none;
+        	}
+        
+        #sec, #min, #hour {
+        	position: absolute;
+        	width: 30px;
+        	height: 600px;
+        	top: 0px;
+        	left: 285px;
+        	}
+        
+        #sec {
+        	background: url(images/sechand.gif);
+        	z-index: 3;
+           	}
+           
+        #min {
+        	background: url(images/minhand.gif);
+        	z-index: 2;
+           	}
+           
+        #hour {
+        	background: url(images/hourhand.gif);
+        	z-index: 1;
+           	}
+           	
+        p {
+            
+            padding: 10px 0 0 0;
+            }
+			
+		#hook-just-in-case {
+			
+            background: #2f2626 !important;
+            text-align: justify  !important;
+            color:white !important;
+            font: 14px Georgia, Serif !important;
+            position: relative;
+            zoom: 1;
+            width: 100% !important;
+            z-index: 10000 !important;
+			line-height: 2.4em;
+			padding-bottom: 1em;
+		}
+		
+		a {
+			color: #ccccff;
+			
+		}
+		
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		#hook-just-in-case p {
+			padding: 0 10px;
+			line-height: 1.7em;	
+		}
+    </style>
+    
+    
+</head>
+
+<body>
+
+    <div id="hook-just-in-case" >
+	<p>
+    Analogue clock made with CSS Transforms and cssSandpaper.  Taken from 
+	<a href="http://css-tricks.com/css3-clock/">an example</a> by 
+	<a href="http://www.tobypitman.com">Toby Pitman</a> posted on 
+	<a href="http://css-tricks.com/">CSS-Tricks</a>  Although
+	the original was coded using <code>-webkit-transform</code>, it was 
+	ridiculously simple to refactor it to use cssSandpaper so that anyone using 
+	a modern web browser can enjoy the eye candy. 
+	<a href="http://www.useragentman.com/blog/2010/04/05/cross-browser-animated-css-transforms-even-in-ie/">Back to User Agent Man CSS3 Animation article </a>
+	</p>
+</div>    
+    
+	<ul id="clock">	
+	   	<li id="sec"></li>
+
+	   	<li id="hour"></li>
+		<li id="min"></li>
+	</ul>
+	
+	
+	
+</body>
+	
+</html>
+

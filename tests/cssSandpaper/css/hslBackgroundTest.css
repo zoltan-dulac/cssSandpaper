@@ -1,0 +1,98 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+
+#colourwheel {
+	position: relative;
+	width: 460px;
+	height: 525px;
+	margin: 0 auto;
+}
+
+div.testBlock {
+	position: absolute;	
+	width: 130px;
+	height: 40px;
+	padding: 10px;
+	top: 170px;
+	left: 200px;
+	border: solid 3px hsl(240, 50%, 20%);
+	color: white;
+	text-align: left;
+	-sand-transform: rotate(90deg);
+	font-size: 18px;
+	
+	
+}
+
+div.testBlock span {
+	display: block;
+	text-align: left;
+	padding: 5px;
+	
+	width: 130px;
+	
+	
+}
+
+div.testBlock span strong {
+	
+	font-size: 25px;
+}
+
+
+#o1 {
+	background: hsla(0, 100%, 50%, 1);
+	-sand-transform: rotate(0deg) translateY(-120px) rotate(90deg);
+}
+
+#o2 {
+	background: hsla(60, 100%, 50%, 1);
+	-sand-transform: rotate(60deg) translateY(-120px) rotate(90deg) scale(-1, -1);;
+}
+
+#o2, #o3 {
+	
+}
+
+#o2 span, #o3 span {
+	text-align: right;
+	
+}
+	
+
+#o3 {
+	background: hsla(120, 100%, 50%, 1);
+	-sand-transform: rotate(120deg) translateY(-120px) rotate(90deg) scale(-1, -1);;
+}
+
+#o4 {
+	background: hsla(180, 100%, 50%, 1);
+	-sand-transform: rotate(180deg) translateY(-120px) rotate(90deg);
+	
+}
+
+#o5 {
+	background: hsla(240, 100%, 50%, 1);
+	-sand-transform: rotate(240deg) translateY(-120px) rotate(90deg);
+	
+}
+
+#o6 {
+	background: hsla(300, 100%, 50%, 1);
+	-sand-transform: rotate(300deg) translateY(-120px) rotate(90deg);
+}
+
+.label {
+	font-size: 1.2em;
+	color: hsl(240, 100%, 50%);
+	text-align: center;
+	font-weight: bold;
+	position: absolute;
+	width: 80px;
+	top: 185px;
+	left: 235px;
+}

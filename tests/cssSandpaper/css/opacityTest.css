@@ -1,0 +1,58 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+#o1 {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	border: solid 1px black;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	padding: 10px;
+	background-color: white;
+	-sand-transform: rotate(45deg);
+	opacity: 0.5;
+}
+
+#o2 {
+	position: absolute;
+	top: 10em;
+	left: 13em;
+	background: red;
+	width: 200px;
+	height: 300px;
+	padding: 10px;
+	-sand-transform: rotate(-45deg);
+	opacity: 0.1;
+}
+
+.relative {
+	position: relative;
+	top: 100px;
+	left: 100px;
+}
+
+
+
+.absolute {
+	position: absolute;
+	top: 30px;
+	left: 22px;
+}
+
+.relative .absolute div {
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	-sand-transform: rotate(30deg);
+	width: 200px;
+	height: 200px;
+	position: relative;
+	left: 400px;
+	padding: 10px;
+	
+}

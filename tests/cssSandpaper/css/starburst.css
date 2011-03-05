@@ -1,0 +1,32 @@
+.container {
+	position: relative;
+}
+
+.starburst {
+	display:block;
+	width:6em;
+	height:6em;
+	background:#fe0;
+	-sand-transform:rotate(-45deg);
+	
+	position:absolute;
+	top:2em;
+	left:2em;
+	text-align:center;
+	text-decoration:none;
+	color:#000;
+	font-weight:bold;
+	font-family:Arial, sans-serif;
+}
+
+.starburst span {
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	display:block;
+	width:6em;
+	height:6em;
+	background:#fe0;
+	-sand-transform:rotate(22.5deg);
+	
+}

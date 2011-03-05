@@ -1,0 +1,58 @@
+@import "../../shared/css/reset.css";
+
+body {
+	font-family: "Arial", sans-serif;
+	background-image: url("../images/background.gif" );
+}
+
+div.testBlock {
+	position: absolute;	
+	width: 400px;
+	height: 200px;
+	padding: 10px;
+	top: 100px;
+	left: 100px;
+	border: solid 1px black;
+	color: white;
+	text-align: center;
+	padding-top: 100px;
+	font-size: 100px;
+}
+
+
+#o1 {
+	background: rgba(0, 0, 250, 1);
+}
+
+#o2 {
+	background: rgba(50, 0, 250, 0.8);
+	top: 150px;
+	left: 150px;
+}
+	
+
+#o3 {
+	background: rgba(100, 0, 200, 0.6);
+	top: 200px;
+	left: 200px;
+}
+
+#o4 {
+	background: rgba(150, 0, 150, 0.4);
+	top: 250px;
+	left: 250px;
+	
+}
+
+#o5 {
+	background: rgba(200, 0, 100, 0.2);
+	top: 300px;
+	left: 300px;
+}
+
+#o6 {
+	background: rgba(250, 0, 50, 0);
+	top: 350px;
+	left: 350px;
+}
+

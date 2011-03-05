@@ -1,0 +1,10 @@
+#testSubject {
+	border: solid red 5px;
+	padding: 1em;
+	font-family: sans-serif;
+	font-size: 0.5em;
+	font-weight: bold;
+	width: 9em;
+	height: 9em;
+	background-color: white;
+}

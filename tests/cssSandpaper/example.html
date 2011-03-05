@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Untitled Document</title>
+		
+		<link type="text/css" href="css/example.css" rel="stylesheet" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+		
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssSandpaper.js">
+		</script>
+		
+	</head>
+	<body>
+		<div id="transformed">This is a test.</div>
+		
+		<img id="tokyoPic" src="images/TokyoSkaParadise1.jpg" /> 
+		
+		<p class="fakeItalic">This is a test of how well this works</p>
+		
+		<p class="another">I also think that <span class="fakeItalic">this is fake</span>.</p>
+		
+		<div id="scroller">
+			<p>The value of the <a class="prop-name" href="#effects">transform</a>
+   property is a list of &lt;transform-functions&gt; applied in the order
+   provided. The individual transform functions are separated by whitespace.
+   The set of allowed transform functions is given below. In this list the
+   type &lt;translation-value&gt; is defined as a &lt;length&gt; or
+   &lt;percentage&gt; value, and the &lt;angle&gt; type is defined by <a href="http://www.w3.org/TR/css3-values/">CSS Values and Units.</a>
+
+  </p><dl>
+   <dt> <span class="prop-value">matrix(&lt;number&gt;, &lt;number&gt;,
+    &lt;number&gt;, &lt;number&gt;, &lt;number&gt;, &lt;number&gt;)</span>
+
+   </dt><dd> specifies a 2D transformation in the form of a <a href="http://www.w3.org/TR/SVG/coords.html#TransformMatrixDefined">transformation
+    matrix</a> of six values. <span class="prop-value">matrix(a,b,c,d,e,f)</span> is equivalent to applying the
+    transformation matrix <strong>[a b c d e f]</strong>.
+
+   </dd><dt> <span class="prop-value">translate(&lt;translation-value&gt;[,
+    &lt;translation-value&gt;])</span>
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#TranslationDefined">2D
+    translation</a> by the vector [tx, ty], where tx is the first
+    translation-value parameter and ty is the optional second
+    translation-value parameter. If <em>&lt;ty&gt;</em> is not provided, ty
+    has zero as a value.
+
+   </dd><dt> <span class="prop-value">translateX(&lt;translation-value&gt;)</span>
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#TranslationDefined">translation</a>
+
+    by the given amount in the X direction.
+
+   </dd><dt> <span class="prop-value">translateY(&lt;translation-value&gt;)</span>
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#TranslationDefined">translation</a>
+    by the given amount in the Y direction.
+
+   </dd><dt> <span class="prop-value">scale(&lt;number&gt;[, &lt;number&gt;])</span>
+
+    
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#ScalingDefined">2D scale</a>
+    operation by the [sx,sy] scaling vector described by the 2 parameters. If
+    the second parameter is not provided, it is takes a value equal to the
+    first.
+
+   </dd><dt> <span class="prop-value">scaleX(&lt;number&gt;)</span>
+
+   </dt><dd> specifies a scale operation using the [sx,1] scaling vector, where sx
+    is given as the parameter.
+
+   </dd><dt> <span class="prop-value">scaleY(&lt;number&gt;)</span>
+
+   </dt><dd> specifies a scale operation using the [1,sy] scaling vector, where sy
+    is given as the parameter.
+
+   </dd><dt> <span class="prop-value">rotate(&lt;angle&gt;)</span>
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#RotationDefined">2D
+    rotation</a> by the angle specified in the parameter about the origin of
+    the element, as defined by the <em><a href="#transform-origin">transform-origin</a></em> property.
+
+   </dd><dt> <span class="prop-value">skewX(&lt;angle&gt;)</span>
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#SkewXDefined">skew
+    transformation along the X axis</a> by the given angle.
+
+   </dd><dt> <span class="prop-value">skewY(&lt;angle&gt;)</span>
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#SkewYDefined">skew
+    transformation along the Y axis</a> by the given angle.
+
+   </dd><dt> <span class="prop-value">skew(&lt;angle&gt; [, &lt;angle&gt;])</span>
+
+   </dt><dd> specifies a <a href="http://www.w3.org/TR/SVG/coords.html#SkewXDefined">skew
+    transformation along the X and Y axes</a>. The first angle parameter
+    specifies the skew on the X axis. The second angle parameter specifies
+    the skew on the Y axis. If the second parameter is not given then a value
+    of 0 is used for the Y angle (ie. no skew on the Y axis).
+  </dd>
+		</div>
+		
+		
+		<div id="radial">
+			This is a radial gradient (it doesn't work in IE at the present time).
+		</div>
+		
+		
+	</body>
+</html>
