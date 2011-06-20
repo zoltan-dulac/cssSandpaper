@@ -9,13 +9,17 @@
  * browsers that support vendor-specific methods.
  *
  * Written by: Zoltan Hawryluk. Version 1.0 beta 1 completed on March 8, 2010.
+ * Version 1.5 completed June 20, 2011.
  *
  * Some routines are based on code from CSS Gradients via Canvas v1.2
- * by Weston Ruter <http://weston.ruter.net/projects/css-gradients-via-canvas/>
+ *   by Weston Ruter <http://weston.ruter.net/projects/css-gradients-via-canvas/>
+ * Includes code from Kazumasa Hasegawa's textshadow.js <http://asamuzak.jp/html/322>
+ *   to implement text-shadows in IE.
+ * 
+ * Requires sylvester.js by James Coglan to implement CSS3 transforms:
+ *    http://sylvester.jcoglan.com/
  *
- * Requires sylvester.js by James Coglan http://sylvester.jcoglan.com/
- *
- * cssSandpaper.js v.1.0 beta 1 available at http://www.useragentman.com/
+ * cssSandpaper.js v.1.5 available at http://www.useragentman.com/
  *
  * released under the MIT License:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -66,8 +70,12 @@ var cssSandpaper = new function(){
         
         indexRules();
         
+		setChromaOverrides();
+		fixTransforms();
+		if (window.textShadowForMSIE) {
+			fixTextShadows();
+		}
         
-        fixTransforms();
         fixBoxShadow();
         fixLinearGradients();
         
@@ -78,6 +86,20 @@ var cssSandpaper = new function(){
         //fixBorderRadius();
     
     }
+	
+	function setChromaOverrides() {
+		 var rules = getRuleList('-sand-chroma-override').values;
+        
+         for (var i in rules) {
+            var rule = rules[i];
+            var nodes = document.querySelectorAll(rule.selector);
+            
+            for (var j = 0; j < nodes.length; j++) {
+				DOMHelpers.setDatasetItem(nodes[j], 'cssSandpaper-chroma', new RGBColor(rule.value).toHex())
+            }
+            
+        }
+	}
     
     me.setOpacity = function(obj, value){
         var property = CSS3Helpers.findProperty(document.body, 'opacity');
@@ -114,6 +136,8 @@ var cssSandpaper = new function(){
         }
         
     }
+	
+	
     
     
     
@@ -145,6 +169,28 @@ var cssSandpaper = new function(){
         }
         
     }
+	
+	function fixTextShadows() {
+		var rules = getRuleList('text-shadow').values;
+        var property = CSS3Helpers.findProperty(document.body, 'text-shadow');
+        
+		if (property == 'filter') {
+			
+			for (var i in rules) {
+				var rule = rules[i];
+				
+				var sels = rule.selector.split(',');
+				
+				for (var j in sels)
+				textShadowForMSIE.ieShadowSettings.push({
+					sel: sels[j],
+					shadow: rule.value
+				});
+			}
+		}
+		
+		textShadowForMSIE.init()
+	}
     
     me.setBoxShadow = function(obj, value){
         var property = CSS3Helpers.findProperty(obj, 'boxShadow');
@@ -215,7 +261,7 @@ var cssSandpaper = new function(){
             return;
         }
         
-        if (node.filters) {
+        if (node.filters && (support != implementation.CANVAS_WORKAROUND || CSSHelpers.isMemberOfClass(document.body, 'cssSandpaper-IEuseGradientFilter') || CSSHelpers.isMemberOfClass(node, 'cssSandpaper-IEuseGradientFilter'))) {
             setGradientFilter(node, values);
         } else if (support == implementation.MOZILLA) {
         	
@@ -536,6 +582,15 @@ var cssSandpaper = new function(){
 			CSSHelpers.removeClass(hiddenNodes[i], 'cssSandpaper-initiallyHidden');
 		} 
     }
+	
+	me.getChromaColor = function (obj) {
+		var background = DOMHelpers.getDatasetItem(obj, 'cssSandpaper-chroma');
+			
+		if (!background) {
+			background = "#808080";
+		}
+		return background;
+	}
 }
 
 function RuleList(propertyName){
@@ -558,130 +613,135 @@ function CSSRule(selector, name, value){
     }
 }
 
-var MatrixGenerator = new function(){
-    var me = this;
-    var reUnit = /[a-z]+$/;
-    me.identity = $M([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
-    
-    
-    function degreesToRadians(degrees){
-        return (degrees - 360) * Math.PI / 180;
-    }
-    
-    function getRadianScalar(angleStr){
-    
-        var num = parseFloat(angleStr);
-        var unit = angleStr.match(reUnit);
+if (window.$M) {
+	var MatrixGenerator = new function(){
+		var me = this;
+		var reUnit = /[a-z]+$/;
+		me.identity = $M([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
 		
 		
-		if (angleStr.trim() == '0') {
-			num = 0;
-			unit = 'rad';
+		function degreesToRadians(degrees){
+			return (degrees - 360) * Math.PI / 180;
 		}
-        
-        if (unit.length != 1 || num == 0) {
-            return 0;
-        }
-        
-        
-        unit = unit[0];
-        
-        
-        var rad;
-        switch (unit) {
-            case "deg":
-                rad = degreesToRadians(num);
-                break;
-            case "rad":
-                rad = num;
-                break;
-            default:
-                throw "Not an angle: " + angleStr;
-        }
-        return rad;
-    }
-    
-    me.prettyPrint = function(m){
-        return StringHelpers.sprintf('| %s %s %s | - | %s %s %s | - |%s %s %s|', m.e(1, 1), m.e(1, 2), m.e(1, 3), m.e(2, 1), m.e(2, 2), m.e(2, 3), m.e(3, 1), m.e(3, 2), m.e(3, 3))
-    }
-    
-    me.rotate = function(angleStr){
-        var num = getRadianScalar(angleStr);
-        return Matrix.RotationZ(num);
-    }
-    
-    me.scale = function(sx, sy){
-        sx = parseFloat(sx)
-        
-        if (!sy) {
-            sy = sx;
-        } else {
-            sy = parseFloat(sy)
-        }
-        
-        
-        return $M([[sx, 0, 0], [0, sy, 0], [0, 0, 1]]);
-    }
-    
-    me.scaleX = function(sx){
-        return me.scale(sx, 1);
-    }
-    
-    me.scaleY = function(sy){
-        return me.scale(1, sy);
-    }
-    
-    me.skew = function(ax, ay){
-        var xRad = getRadianScalar(ax);
-        var yRad;
-        
-        if (ay != null) {
-            yRad = getRadianScalar(ay)
-        } else {
-            yRad = xRad
-        }
 		
-		if (xRad != null && yRad != null) {
+		function getRadianScalar(angleStr){
+		
+			var num = parseFloat(angleStr);
+			var unit = angleStr.match(reUnit);
 			
-			return $M([[1, Math.tan(xRad), 0], [Math.tan(yRad), 1, 0], [0, 0, 1]]);
-		} else {
-			return null;
+			
+			if (angleStr.trim() == '0') {
+				num = 0;
+				unit = 'rad';
+			}
+			
+			if (unit.length != 1 || num == 0) {
+				return 0;
+			}
+			
+			
+			unit = unit[0];
+			
+			
+			var rad;
+			switch (unit) {
+				case "deg":
+					rad = degreesToRadians(num);
+					break;
+				case "rad":
+					rad = num;
+					break;
+				default:
+					throw "Not an angle: " + angleStr;
+			}
+			return rad;
 		}
-    }
-    
-    me.skewX = function(ax){
-    
-        return me.skew(ax, "0");
-    }
-    
-    me.skewY = function(ay){
-        return me.skew("0", ay);
-    }
-    
-    me.translate = function(tx, ty){
-    
-        var TX = parseInt(tx);
-        var TY = parseInt(ty)
-        
-        //jslog.debug(StringHelpers.sprintf('translate %f %f', TX, TY));
-        
-        return $M([[1, 0, TX], [0, 1, TY], [0, 0, 1]]);
-    }
-    
-    me.translateX = function(tx){
-        return me.translate(tx, 0);
-    }
-    
-    me.translateY = function(ty){
-        return me.translate(0, ty);
-    }
-    
-    
-    me.matrix = function(a, b, c, d, e, f){
-    
-        // for now, e and f are ignored
-        return $M([[a, c, parseInt(e)], [b, d, parseInt(f)], [0, 0, 1]])
-    }
+		
+		me.prettyPrint = function(m){
+			return StringHelpers.sprintf('| %s %s %s | - | %s %s %s | - |%s %s %s|', m.e(1, 1), m.e(1, 2), m.e(1, 3), m.e(2, 1), m.e(2, 2), m.e(2, 3), m.e(3, 1), m.e(3, 2), m.e(3, 3))
+		}
+		
+		me.rotate = function(angleStr){
+			var num = getRadianScalar(angleStr);
+			return Matrix.RotationZ(num);
+		}
+		
+		me.scale = function(sx, sy){
+			sx = parseFloat(sx)
+			
+			if (!sy) {
+				sy = sx;
+			}
+			else {
+				sy = parseFloat(sy)
+			}
+			
+			
+			return $M([[sx, 0, 0], [0, sy, 0], [0, 0, 1]]);
+		}
+		
+		me.scaleX = function(sx){
+			return me.scale(sx, 1);
+		}
+		
+		me.scaleY = function(sy){
+			return me.scale(1, sy);
+		}
+		
+		me.skew = function(ax, ay){
+			var xRad = getRadianScalar(ax);
+			var yRad;
+			
+			if (ay != null) {
+				yRad = getRadianScalar(ay)
+			}
+			else {
+				yRad = xRad
+			}
+			
+			if (xRad != null && yRad != null) {
+			
+				return $M([[1, Math.tan(xRad), 0], [Math.tan(yRad), 1, 0], [0, 0, 1]]);
+			}
+			else {
+				return null;
+			}
+		}
+		
+		me.skewX = function(ax){
+		
+			return me.skew(ax, "0");
+		}
+		
+		me.skewY = function(ay){
+			return me.skew("0", ay);
+		}
+		
+		me.translate = function(tx, ty){
+		
+			var TX = parseInt(tx);
+			var TY = parseInt(ty)
+			
+			//jslog.debug(StringHelpers.sprintf('translate %f %f', TX, TY));
+			
+			return $M([[1, 0, TX], [0, 1, TY], [0, 0, 1]]);
+		}
+		
+		me.translateX = function(tx){
+			return me.translate(tx, 0);
+		}
+		
+		me.translateY = function(ty){
+			return me.translate(0, ty);
+		}
+		
+		
+		me.matrix = function(a, b, c, d, e, f){
+		
+			// for now, e and f are ignored
+			return $M([[a, c, parseInt(e)], [b, d, parseInt(f)], [0, 0, 1]])
+		}
+	}
 }
 
 var CSS3Helpers = new function(){
@@ -1217,10 +1277,14 @@ var CSS3Helpers = new function(){
             obj.style.position = 'absolute';
             container.appendChild(obj);
             parentNode.insertBefore(container, replacement);
-            container.style.backgroundColor = 'transparent';
+            //container.style.backgroundColor = 'transparent';
             
             container.style.padding = '0';
-            
+            var background = cssSandpaper.getChromaColor(obj);
+			
+			obj.style.backgroundColor = background;
+			filter = CSS3Helpers.addFilter(obj, 'DXImageTransform.Microsoft.Chroma', StringHelpers.sprintf("color=%s", background));
+            filter.color = background;
             filter = me.addFilter(obj, 'DXImageTransform.Microsoft.Matrix', "M11=1, M12=0, M21=0, M22=1, sizingMethod='auto expand'")
             var bgImage = obj.currentStyle.backgroundImage.split("\"")[1];
             /*
@@ -1289,7 +1353,12 @@ var CSS3Helpers = new function(){
             
             obj.style.filter += StringHelpers.sprintf("%sprogid:%s(%s)", comma, filterName, filterValue);
             
-            filter = obj.filters.item(filterName);
+			
+			try {
+				filter = obj.filters.item(filterName);
+			} catch (ex) {
+				return null;
+			}
             
         }
         
@@ -1304,14 +1373,22 @@ var CSS3Helpers = new function(){
     me.findProperty = function(obj, type){
         capType = type.capitalize();
         
+       
+        
         var r = cache[type]
         if (!r) {
         
-        
+        	var isTransform = (type == 'transform');
             var style = obj.style;
             
             
-            var properties = [type, 'Moz' + capType, 'Webkit' + capType, 'O' + capType, 'filter'];
+            var properties = [type, 'Moz' + capType, 'Webkit' + capType, 'O' + capType];
+            
+            if ((isTransform && !CSSHelpers.isMemberOfClass(document.body, 'cssSandpaper-noMSTransform')) || !isTransform) {
+            	properties.push('ms' + capType);
+            } 
+            properties.push('filter');
+           
             for (var i = 0; i < properties.length; i++) {
                 if (style[properties[i]] != null) {
                     r = properties[i];
@@ -1935,37 +2012,164 @@ String.prototype.trim = function(){
 
 if (!window.DOMHelpers) {
 
-DOMHelpers = new function () {
-	var me = this;
+	DOMHelpers = new function () {
+		var me = this;
+		
+		/**
+		 * Returns all children of an element. Needed if it is necessary to do
+		 * the equivalent of getElementsByTagName('*') for IE5 for Windows.
+		 * 
+		 * @param {Object} e - an HTML object.
+		 */
+		me.getAllDescendants = function(obj) {
+			return obj.all ? obj.all : obj.getElementsByTagName('*');
+		}
+		
+		/******
+		* Converts a DOM live node list to a static/dead array.  Good when you don't
+		* want the thing you are iterating in a for loop changing as the DOM changes.
+		* 
+		* @param {Object} nodeList - a node list (like one returned by document.getElementsByTagName)
+		* @return {Array} - an array of nodes.
+		* 
+		*******/
+		me.nodeListToArray = function (nodeList) 
+		{ 
+		    var ary = []; 
+		    for(var i=0, len = nodeList.length; i < len; i++) 
+		    { 
+		        ary.push(nodeList[i]); 
+		    } 
+		    return ary; 
+		}
+		
+		me.getDefinedAttributes = function (obj) {
+		
+			var attrs = obj.attributes;
+			var r = new Array();
+			
+			for (var i=0; i<attrs.length; i++) {
+				attr = attrs[i];
+				if (attr.specified) {
+					r[attr.name] = attr.value;
+					
+				}
+			}
+		
+			return r;
+		}
+		
+		/**
+		 * Given an HTML or XML object, find the an attribute by name.
+		 * 
+		 * @param {Object} obj - a DOM object.
+		 * @param {String} attrName - the name of an attribute inside the DOM object.
+		 * @return {Object} - the attribute object or null if there isn't one.
+		 */
+		me.getAttributeByName = function (obj, attrName) {
 	
-	/**
-	 * Returns all children of an element. Needed if it is necessary to do
-	 * the equivalent of getElementsByTagName('*') for IE5 for Windows.
-	 * 
-	 * @param {Object} e - an HTML object.
-	 */
-	me.getAllDescendants = function(obj) {
-		return obj.all ? obj.all : obj.getElementsByTagName('*');
+			var attributes = obj.attributes;
+			
+			try {
+				return attributes.getNamedItem(attrName);
+				
+			} 
+			catch (ex) {
+				var i;
+				
+				for (i = 0; i < attributes.length; i++) {
+					var attr = attributes[i]
+					if (attr.nodeName == attrName && attr.specified) {
+						return attr;
+					}
+				}
+				return null;
+			}
+			
+		}
+		
+		/**
+		 * Given an HTML or XML object, find the value of an attribute.
+		 * 
+		 * @param {Object} obj - a DOM object.
+		 * @param {String} attrName - the name of an attribute inside the DOM object.
+		 * @return {String} - the value of the attribute.
+		 */
+		me.getAttributeValue = function (obj, attrName) {
+			var attr = me.getAttributeByName(obj, attrName);
+			
+			if (attr != null) {
+				return attr.nodeValue;
+			} else {
+				return obj[attrName];
+			}
+		}
+		
+		/**
+		 * Given an HTML or XML object, set the value of an attribute.
+		 * 
+		 * @param {Object} obj - a DOM object.
+		 * @param {String} attrName - the name of an attribute inside the DOM object.
+		 * @param {String} attrValue - the value of the attribute.
+		 */
+		me.setAttributeValue = function (obj, attrName, attrValue) {
+			var attr = me.getAttributeByName(obj, attrName);
+			
+			if (attr != null) {
+				attr.nodeValue = attrValue;
+			} else {
+				attr = document.createAttribute(attrName);
+				attr.value = attrValue;
+				obj.setAttributeNode(attr)
+				//obj[attrName] = attrValue;
+			}
+		}
+		
+		/*
+		 * HTML5 dataset
+		 */	
+		me.getDataset = function (obj) {
+			var r = new Array();
+			
+			var attributes = DOMHelpers.getDefinedAttributes(obj);
+			//jslog.debug('entered')
+			for (var i in attributes) {
+				//var attr = attributes[i];
+				
+				if (i.indexOf('data-') == 0) {
+					//jslog.debug('adding ' + name)
+					var name = i.substring(5);
+					//jslog.debug('adding ' + name)
+					r[name] = attributes[i];
+				}
+			}
+			
+			//jslog.debug('dataset = ' + DebugHelpers.getProperties(r))
+			return r;
+		}
+		
+		me.getDatasetItem = function (obj, name) {
+			var dataName = 'data-' + name.toLowerCase();
+			var r = DOMHelpers.getAttributeValue(obj, dataName);
+			
+			
+			if (!r) {
+				r = obj[dataName];
+			}
+			return r;
+		}
+		
+		me.setDatasetItem = function (obj, name, value) {
+			var attrName = 'data-' + name.toLowerCase();
+			
+			var val = DOMHelpers.setAttributeValue(obj, attrName, value);
+			
+			if (DOMHelpers.getAttributeValue(obj, attrName) == null) {
+				obj[attrName] = value;
+				
+			}
+		}
 	}
-	
-	/******
-	* Converts a DOM live node list to a static/dead array.  Good when you don't
-	* want the thing you are iterating in a for loop changing as the DOM changes.
-	* 
-	* @param {Object} nodeList - a node list (like one returned by document.getElementsByTagName)
-	* @return {Array} - an array of nodes.
-	* 
-	*******/
-	me.nodeListToArray = function (nodeList) 
-	{ 
-	    var ary = []; 
-	    for(var i=0, len = nodeList.length; i < len; i++) 
-	    { 
-	        ary.push(nodeList[i]); 
-	    } 
-	    return ary; 
-	} 
-}
 }
 
 //+ Jonas Raoni Soares Silva
