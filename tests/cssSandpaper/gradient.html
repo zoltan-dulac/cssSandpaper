@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+		
 		
 		<title>cssSandpaper Animated Gradient Example</title>
 		
@@ -67,10 +67,12 @@
 		<script type="text/javascript" src="js/gradient.js">
 		</script>
 	</head>
-	<body>
+	<body class="cssSandpaper-IEuseGradientFilter">
 		<div id="hook-just-in-case">
 			This example uses cssSandpaper to manipulate the 
-			<code>gradient</code> property.</strong>
+			<code>gradient</code> property.</strong> IE9 uses the <code>Gradient</code> Visual Filter to polyfill
+			<code>-sand-gradient()</code> because don't work well at all in IE9 using the <code>canvas</code>
+			polyfill.  This is done by making the <code>&lt;body&gt;</code> tag a member of the CSS class <code>cssSandpaper-IEuseGradientFilter</code>
 			<a href="http://www.useragentman.com/blog/2010/04/05/cross-browser-animated-css-transforms-even-in-ie/">Back to User Agent Man CSS3 Animation article </a>
 		</div>
 		
