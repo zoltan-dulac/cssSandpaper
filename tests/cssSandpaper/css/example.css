@@ -33,6 +33,7 @@ body {
 	font-size: 100px;
 	margin: 20px;
 	-sand-transform: scale(1, 0.5) skew(20deg, 1deg) rotate(60deg) skew(200deg, 200deg) ;
+	-sand-box-shadow: 15px 15px #0000ff;
 	z-index: 2; 
 }
 
