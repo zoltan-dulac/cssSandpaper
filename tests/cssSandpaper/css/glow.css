@@ -1,0 +1,117 @@
+@import "/shared/css/reset.css";
+
+.test1 {
+	background-color: white;
+	zoom: 1;
+	text-shadow: 2px 2px 4px #555555;
+	filter:
+		
+		progid:DXImageTransform.Microsoft.Chroma(color='white'),
+		progid:DXImageTransform.Microsoft.Shadow(color=#555555,direction=135,strength=4);
+}
+
+.test0 {
+	background: black;
+	position: relative;
+	
+	
+	text-shadow: 
+		1px -1px 5px white,
+		-1px 1px 5px white,
+		1px 1px 5px white,
+		-1px -1px 5px white;
+	
+	;
+	/* filter:
+		
+		progid:DXImageTransform.Microsoft.Chroma(color='#cccccc'),
+		
+		
+		progid:DXImageTransform.Microsoft.Glow(color=#0000ff,direction=0,strength=1,OffsetX=10,OffsetY=10); */
+}
+
+
+body.ie6 .test0 p,
+body.ie7 .test0 p,
+body.ie8 .test0 p,
+body.ie9 .test0 p {
+	zoom: 1;
+	background-color: #fffff3; 
+	-ms-filter: "progid:DXImageTransform.Microsoft.Chroma(color='#fffff3') progid:DXImageTransform.Microsoft.Glow(Color=white, Strength=2)";
+	filter: progid:DXImageTransform.Microsoft.Chroma(color='#fffff3')
+		 progid:DXImageTransform.Microsoft.Glow(Color=white, Strength=3); 
+}
+
+.textShadowTest {
+	width: 460px;
+	height: 292px;
+	font-family: "Arial", "Helvetica", sans-serif;
+	font-weight: bold;
+	padding: 20px;
+	font-size: 40px;
+	text-align: center;
+}
+
+.textShadowTest p {
+	padding-bottom: 10px;
+}
+
+#sky {
+	
+	background: url('../images/sky.jpg') #243165;
+	color: black;
+	-sand-transform: rotate(45deg);
+	text-shadow: 
+		1px -1px 5px rgba(255, 255, 255, 0.5),
+		-1px 1px 5px rgba(255, 255, 255, 0.5),
+		1px 1px 5px rgba(255, 255, 255, 0.5),
+		-1px -1px 5px rgba(255, 255, 255, 0.5),
+		0px 1px 5px rgba(255, 255, 255, 0.5),
+		0px -1px 5px rgba(255, 255, 255, 0.5),
+		1px 0px 5px rgba(255, 255, 255, 0.5),
+		-1px 0px 5px rgba(255, 255, 255, 0.5)
+		;
+} 
+
+#sky p {
+	margin: 0;
+}
+
+body.ie6 #sky p,
+body.ie7 #sky p,
+body.ie8 #sky p,
+body.ie9 #sky p {
+	zoom: 1;
+	background-color: #cccccc;
+	filter: progid:DXImageTransform.Microsoft.Chroma(color='#cccccc')
+		 progid:DXImageTransform.Microsoft.Glow(Color=#ffffff, Strength=5)
+		 ; 
+}
+
+
+#clouds {
+	-sand-transform: skewX(-45deg);
+	background: url('/border-image/images/backgrounds/clouds.jpg') #c9d0e0;
+	text-shadow: 1px -1px 2px #cccccc,
+		-1px 1px 2px #666666,
+		1px 1px 2px #666666,
+		-1px -1px 2px #666666,
+		0px 1px 2px #666666,
+		0px -1px 2px #666666,
+		1px 0px 2px #666666,
+		-1px 0px 2px #666666
+		;
+	color: white;
+}
+
+
+body.ie6 #clouds p,
+body.ie7 #clouds p,
+body.ie8 #clouds p,
+body.ie9 #clouds p {
+	zoom: 1;
+	background-color: #666666;
+	
+	filter: progid:DXImageTransform.Microsoft.Chroma(color='#666666')
+		 progid:DXImageTransform.Microsoft.Glow(Color=#666666, Strength=3); 
+}

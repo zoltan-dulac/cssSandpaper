@@ -1,0 +1,566 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+
+	<title>  Full CSS3 Text-Shadows &mdash; Even In IE</title>
+
+	<meta name="generator" content="WordPress 3.0" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+	<base href="http://www.useragentman.com/blog/" />
+	<link href="http://localhost/git/cssSandpaper/tests/cssSandpaper/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+
+	
+	
+	<link rel="stylesheet" type="text/css" href="http://localhost/git/cssSandpaper/tests/cssSandpaper/css/3296.css" /> 
+	
+	<script type="text/javascript" src="/packages/cssSandpaper-1.5/shared/js/EventHelpers.js"></script>
+	<script type="text/javascript" src="http://localhost/git/cssSandpaper/shared/js/asamuzak.jp/textshadow.js"></script>
+	<script type="text/javascript" src="/packages/cssSandpaper-1.5/shared/js/cssQuery-p.js"></script>
+	<script type="text/javascript" src="/packages/cssSandpaper-1.5/shared/js/jcoglan.com/sylvester.js"></script>
+	<script type="text/javascript" src="/packages/cssSandpaper-1.5/shared/js/cssSandpaper.js"></script><!-- ID is 3296 --> 
+<!--	<script type="text/javascript" src="/shared/js/weston.ruter.net/webforms2/webforms2_src.js"></script> -->
+
+	
+	<!-- <script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	<script type="text/javascript" src="/shared/js/cssQuery-p.js"></script>
+	<script type="text/javascript" src="/shared/js/datasetObjectStore.js"></script>
+	<script type="text/javascript" src="/shared/js/stickyObject.js"></script> -->
+	
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Full CSS3 Text-Shadows &mdash; Even In IE Comments Feed" href="http://www.useragentman.com/blog/?p=3296/feed/" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='User Agent Man' href='http://www.useragentman.com/blog/' />
+<link rel='start' title='Optimizing PNG Files, for both Web and Print.' href='http://www.useragentman.com/blog/2009/09/16/optimizing-png-files-for-both-web-and-print/' />
+<link rel='prev' title='Fixing &lt;code&gt;oninput&lt;/code&gt; in IE Using html5Widgets' href='http://www.useragentman.com/blog/2011/05/12/fixing-oninput-in-ie9-using-html5widgets/' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://www.useragentman.com/blog/?p=3296' />
+<link rel='shortlink' href='http://www.useragentman.com/blog/?p=3296' />
+</head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down custom"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down custom"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down custom"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 custom"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="/blog/">
+                    <input type="text" name="s"> <input type=
+                    "submit" name="go" value="Search">
+
+                </form>
+				
+
+                <h1>User Agent Man</h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+<a href="http://twitter.com/zoltandulac"><img src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+<li><a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/" title="Cross Browser CSS Transforms - even in IE">Cross Browser CSS Transforms - even in IE</a></li><li><a href="http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/" title="@font-face in Depth">@font-face in Depth</a></li><li><a href="http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/" title="How to Detect Font-Smoothing Using JavaScript">How to Detect Font-Smoothing Using JavaScript</a></li><li><a href="http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/" title="Cross Browser HTML5 Drag and Drop">Cross Browser HTML5 Drag and Drop</a></li><li><a href="http://www.useragentman.com/blog/2010/07/27/cross-browser-html5-forms-using-modernizr-webforms2-and-html5widgets/" title="Creating Cross Browser HTML5 Forms Now, Using modernizr, webforms2 and html5Widgets">Creating Cross Browser HTML5 Forms Now, Using modernizr, webforms2 and html5Widgets</a></li>				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" title="View all posts filed under Color">Color</a>
+</li>
+
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" title="View all posts filed under Cygwin">Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" title="View all posts filed under Internationalization">Internationalization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" title="View all posts filed under Technologies">Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" title="View all posts filed under ClearType">ClearType</a>
+
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" title="View all posts filed under CSS">CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" title="View all posts filed under CSS3">CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" title="View all posts filed under border-image">border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" title="View all posts filed under box-shadow">box-shadow</a>
+
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" title="View all posts filed under gradients">gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" title="View all posts filed under hsl/hsla">hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" title="View all posts filed under rgb/rgba">rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" title="View all posts filed under text-shadow">text-shadow</a>
+</li>
+
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" title="View all posts filed under transform">transform</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" title="View all posts filed under IE Visual Filters">IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" title="View all posts filed under Fonts">Fonts</a>
+
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" title="View all posts filed under @font-face">@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" title="View all posts filed under converting">converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" title="View all posts filed under FontForge">FontForge</a>
+</li>
+	</ul>
+</li>
+
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" title="View all posts filed under HTML">HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" title="View all posts filed under Forms">Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" title="View all posts filed under HTML5">HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" title="View all posts filed under Custom Data Attributes">Custom Data Attributes</a>
+
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" title="View all posts filed under Drag and Drop">Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" title="View all posts filed under Events">Events</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" title="View all posts filed under Ruby">Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" title="View all posts filed under Images">Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" title="View all posts filed under JavaScript">JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" title="View all posts filed under Events">Events</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" title="View all posts filed under Polyfills">Polyfills</a>
+
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" title="View all posts filed under XML">XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" title="View all posts filed under SVG">SVG</a>
+</li>
+	</ul>
+</li>
+</ul>
+
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2011/05/' title='May 2011'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/' title='April 2011'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/' title='March 2011'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/' title='February 2011'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/' title='January 2011'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/' title='October 2010'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/' title='September 2010'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/' title='August 2010'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/' title='July 2010'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/' title='June 2010'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/' title='May 2010'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/' title='April 2010'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/' title='March 2010'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/' title='January 2010'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/12/' title='December 2009'>December 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/' title='November 2009'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/' title='October 2009'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/' title='September 2009'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts">
+
+		
+		
+<div class="navigation">
+
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2011/05/12/fixing-oninput-in-ie9-using-html5widgets/" rel="prev">Fixing <code>oninput</code> in IE Using html5Widgets</a></span>
+	<span class="next"></span>
+</div>
+
+
+			<h1>Full CSS3 Text-Shadows &mdash; Even In IE</h1>
+
+			<h4 class="meta">June 12th, 2011 by zoltan &middot; <a href="http://www.useragentman.com/blog/?p=3296#comments">No Comments</a></h4>
+			<div class="entry">
+				<div id="intro" class="alignLeft">
+<span id="css3And">CSS3 &amp;</span><br /><span id="html5">HTML5</span>
+</div>
+<p>In the last few months, <strong>I have written two articles where I discussed a few strategies to do CSS3-style transforms in IE</strong> (<a href="http://www.useragentman.com/blog/2011/04/14/css3-text-shadow-can-it-be-done-in-ie-without-javascript/">CSS3 Text-Shadow – Can It Be Done in IE Without JavaScript?</a> and <a href="http://www.useragentman.com/blog/2011/04/23/css-blurred-text-shadow-in-ie-part-i/">CSS Blurred Text-Shadow in IE — Part I</a>).  While demonstrating the possibilities to creating a varied range of text-shadows in IE, there wasn&#8217;t any silver bullet that produced what I considered one of the Holy Grails of CSS polyfills: <strong>a method that could take an existing page and render multiple CSS3 text-shadows in IE</strong> with few, if any, changes to the CSS code. To that end, at the end of my last article, I dropped the gauntlet at the end of my last article  and challenged the web development community to help come up with a better solution.  I got a few takers, but one stood out from the rest. <strong><a href="http://asamuzak.jp/"> Kazumasa Hasegawa</a> submitted his script and blog post <a href="http://asamuzak.jp/html/321">(in Japanese</a> and then <a href="http://asamuzak.jp/html/322">in English</a>) about his script that could do exactly what I asked: full CSS3-style text-shadowing in IE.</strong>   It can do multiple blurred and unblurred shadows per block of text.  The only caveat is that one would have to set the CSS selectors inside a JavaScript file.  However, the code was extremely well written, and it was very easy for me to refactor it to become a plug-in for my CSS3 polyfill library, cssSandpaper.  Now, all a developer has to do now is include a few <code>&lt;script&gt;</code> tags into the <code>&lt;head&gt;</code>, and<strong> BAM!!! &mdash; instant text-shadow goodness in IE7+.</strong></p>
+
+<h2>Yeah Whatever!  Show Me Proof!</h2>
+<p>If you are viewing this page in IE7+, here are the droids you are looking for:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>
+Live CSS/HTML
+</th>
+<th class="screenshot">
+Firefox
+</th>
+<th class="screenshot">
+IE9
+</th>
+<th>
+
+Text-Shadow Syntax<br />
+</tr>
+</thead>
+<tbody>
+<tr  id="example1">
+<td  class="example">
+<span><strong>Simple</strong></span>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie01.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff01.png" alt=""  />
+</td>
+<td class="code">
+
+<pre>
+2px 2px 0 #E51919;
+</pre>
+</td>
+</tr>
+<tr id="example2">
+<td  class="example">
+<span>Blurred</span>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie02.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff02.png" alt=""  />
+</td>
+<td class="code">
+
+<pre>
+3px 3px 3px #B24C4C;
+</pre>
+</td>
+</tr>
+<tr id="example3">
+<td  class="example">
+<span>Etched</span>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie03.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff03.png" alt=""  />
+</td>
+<td class="code">
+
+<pre>
+0px 1px 0px white
+</pre>
+</td>
+</tr>
+<tr  id="example4">
+<td  class="example">
+<span>Flaming</span>
+</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie04.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff04.png" alt=""  /></td>
+<td class="code">
+<pre>
+0 0 4px white, 0 -5px 4px #FFFF33,
+2px -10px 6px #FFDD33,  -2px -15px 11px #FF8800,
+2px -25px 18px #FF2200; </pre>
+</td>
+
+</tr>
+<tr  id="example5">
+<td  class="example">
+<span>Neon</span>
+</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie05.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff05.png" alt=""  /></td>
+<td class="code">
+<pre>
+0 0 1px #fff, 0 0 2px #fff,
+0 0 3px #fff, 0 0 4px #ff00de,
+0 0 7px #ff00de, 0 0 8px #ff00de,
+0 0 10px #ff00de, 0 0 15px #ff00de;
+</pre>
+</td>
+</tr>
+<tr  id="example6">
+<td  class="example">
+<span>Outlined</span>
+
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie06.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff06.png" alt=""  />
+</td>
+<td class="code">
+<pre>
+0 0 3px #fff
+</pre>
+</td>
+</tr>
+<tr  id="example7" >
+<td class="example">
+<span>Glowing</span>
+
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie07.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff07.png" alt=""  />
+</td>
+<td class="code">
+<pre>
+0 0 20px yellow, 0 0 60px yellow
+</pre>
+</td>
+</tr>
+<tr  id="example8">
+<td  class="example">
+<span>Embossed</span>
+
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie08.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff08.png" alt=""  />
+</td>
+<td class="code">
+<pre>
+-1px -1px white, 1px 1px #333333
+</pre>
+</td>
+</tr>
+<tr  id="example9">
+<td  class="example">
+<span>Pillow</span>
+
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie09.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff09.png" alt=""  />
+</td>
+<td class="code">
+<pre>
+1px 1px white,
+-1px -1px #444
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the last two examples (Emboss and Pillow) do not appear correctly in IE7 and 8.  This is due to the way that IE renders fonts  </p>
+
+<h2>Okay, What Are The Caveats</h2>
+<p>Like any polyfill solution, there are a few things one has to keep in mind when using a solution like this. </p>
+<ol>
+<li>Creating a large text-shadow blur (i.e. greater than 70px) on a large piece of text can cause Internet Explorer&#8217;s rendering engine to slow down when the text is scrolled into view.</li>
+<li>Sometimes, in order for the text-shadows to render correctly when using ClearType, you may have to use the <code>-sand-chroma-override</code> CSS property on the HTML you applied the <code>text-shadow</code> on.  This property is used by cssSandpaper to fix a problem with ClearType and IE&#8217;s Visual Filters, as described in my previous blog post, <a href="http://www.useragentman.com/blog/2010/09/02/how-to-make-cleartype-font-face-fonts-and-css-visual-filters-play-nicely-together/" >How to Make ClearType, @font-face Fonts and CSS Visual Filters Play Nicely Together</a>.  Most of the time, this property should be set to be the color that that is behind the text value of the background of the text, but sometimes you will have to look at the outline of the texts and the solid shadows to get an idea as to how it should be set.  Let&#8217;s take, for example, the &#8220;Law and Order&#8221; style text at the top of this page.  We used the following CSS to produce the text-shadow on the &#8220;CSS3&#8243; text:<br />
+
+<blockquote class="code">
+<pre>
+-sand-chroma-override: #666666;
+text-shadow:
+	-4px 0px 0px #0f1128,
+	-8px 0px 4px rgb(50, 152, 234),
+	-10px 0px 4px rgba(50, 152, 234, 0.3),
+	-8px -4px 4px rgba(50, 152, 234, 0.6),
+	-8px 4px 4px rgba(50, 152, 234, 0.6);
+</pre>
+</blockquote>
+<p>Why did I end up using <code>#666666</code>?  It is a greyscale color that is roughly between the brightness of the off-white text and the blue shadow.   If I set it to black instead, the outline of the text&#8217;s first dark text-shadow would be blocky, as seen here:</p>
+<table class="dataTable detailedScreenshots">
+<thead>
+<th></th>
+<th><code>-sand-chroma-override: #000000</code></th>
+<th><code>-sand-chroma-override: #666666</code></th>
+
+</thead>
+<tbody>
+<tr>
+<th>Scale 100%</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/lawAndOrderIEChromaBlack.png" alt="" title="lawAndOrderIEChromaBlack"/></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/lawAndOrderIEChromaGray.png" alt="" title="lawAndOrderIEChromaBlack"/</td>
+</tr>
+<tr>
+<th>Scale 300%</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/lawAndOrderIEChromaBlack_Detail1.png" alt="" title="lawAndOrderIEChromaBlack"/</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/lawAndOrderIEChromaGray_Detail1.png" alt="" title="lawAndOrderIEChromaBlack"/</td>
+</tbody>
+</table>
+<p>What you set this value to will depend on the text-shadow recipe you are using and, to paraphrase my Mathematics text-books in college, I leave it up to the reader to play around with the <code>-sand-chroma-override</code> value to see what looks best in which situation.
+
+</li>
+</li>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/css/" title="View all posts in CSS" rel="category tag">CSS</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/" title="View all posts in CSS3" rel="category tag">CSS3</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" title="View all posts in ClearType" rel="category tag">ClearType</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/" title="View all posts in JavaScript" rel="category tag">JavaScript</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" title="View all posts in Polyfills" rel="category tag">Polyfills</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" title="View all posts in text-shadow" rel="category tag">text-shadow</a> </p>
+
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">0 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+		 
+			<!-- If comments are open, but there are no comments. -->
+
+		
+	</ul>
+
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="visibleIf-submitInvisibleData">
+			
+				
+				<p class="unstyled">Logged in as <a href="http://www.useragentman.com/blog/wp-admin/profile.php">zoltan</a>. <a href="http://www.useragentman.com/blog/wp-login.php?action=logout" title="Log out of this account">Logout &raquo;</a></p>
+	
+										
+			
+				<p><textarea required="required" class="text_input text_area" name="comment" id="comment" rows="7" tabindex="4"></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" tabindex="5" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="3296" class="visibleIf-submitInvisibleData" />
+
+				</p>
+		
+				<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="2d463e3dbd" />	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<!--  Easy Popular Posts by Christopher Ross - http://thisismyurl.com   -->	</div>
+	</div>
+	</div>
+</body>
+</html>

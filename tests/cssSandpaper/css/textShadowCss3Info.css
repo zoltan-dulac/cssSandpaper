@@ -1,0 +1,24 @@
+@import "/shared/css/example.css";
+
+#hot {
+	color: white;
+	text-shadow: 0 0 4px white, 
+		0 -5px 4px #FFFF33, 
+		2px -10px 6px #FFDD33, 
+		-2px -15px 11px #FF8800, 
+		2px -25px 18px #FF2200;
+	-sand-chroma-override: black;
+	font-size: 45px;
+	text-align: center;
+	margin-top: 200px;
+	width: 100%;
+	font-family: "Trebuchet MS", "Arial", sans-serif;
+	}
+	
+body {
+	background: black;
+}
+
+body.withBackground {
+	background: black url(images/sunsetForest.jpg) center top no-repeat;
+}

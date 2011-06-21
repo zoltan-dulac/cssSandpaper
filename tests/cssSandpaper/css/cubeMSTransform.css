@@ -1,0 +1,171 @@
+/*
+ * The cube design is inspired by Paul Hayes and his article 3D Cube using
+ * CSS transformation
+ * (http://www.fofronline.com/2009-04/3d-cube-using-css-transformations/)
+ */
+/* Import the style of useragentman.com.  No transform effects are in it */@import "global.css";
+body {
+    font-size: 0.95em;
+    letter-spacing: 1px;
+    font-family: "Droid Sans", sans-serif;
+    background: black;
+    color: white;
+}
+
+h1 {
+    font-family: "Graublau Web Bold", sans-serif;
+    font-weight: bold;
+}
+
+.content {
+    background-color: white;
+    margin-left: 1em;
+    margin-top: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    border: 1px solid #968779;
+    font-size: 0.9em;
+    padding: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+    line-height: 1.3em;
+}
+
+.alignRight {
+    float: right;
+    padding-left: 10px;
+}
+
+.explanation {
+    color: white;
+    font-size: 1em;
+    position: absolute;
+}
+
+#intro {
+    top: -16em;
+    left: -1.5em;
+    width: 20em;
+    /* border: solid 1px white; */
+    -moz-transform: rotate(-30deg) skew(-30deg, 0deg);
+	-webkit-transform: rotate(-30deg) skew(-30deg, 0deg);
+	-o-transform: rotate(-30deg) skew(-30deg, 0deg);
+	-ms-transform: rotate(-30deg) skew(-30deg, 0deg);
+	transform: rotate(-30deg) skew(-30deg, 0deg);		
+	line-height: 1.4em;
+}
+
+#acknowledgements {
+	top: -16em;
+	right: -1.5em;
+	width: 20em;
+	-moz-transform: rotate(30deg) skew(30deg, 0deg);
+	-webkit-transform: rotate(30deg) skew(30deg, 0deg);
+	-o-transform: rotate(30deg) skew(30deg, 0deg);
+	-ms-transform: rotate(30deg) skew(30deg, 0deg);
+	transform: rotate(30deg) skew(30deg, 0deg);		
+	line-height: 1.4em;
+	text-align: right;	
+}
+
+
+#scrollBarExplanation {
+	right: -12em;	
+	top: 0em;
+	width: 10em;
+}
+
+.explanation a {
+	color: #ccccff;
+}
+
+.arrow {
+	font-family: "Arial Unicode MS", sans-serif;
+	font-size: 3em;
+}
+
+
+.cube {
+	position: relative;
+	color: black;
+	margin: 21em auto;
+	width: 40em;
+	
+}
+
+#skyGrid {
+	position: absolute;
+	left: 0;
+	top: -150px;
+}
+
+
+
+.rightFace,
+.leftFace,
+.topFace {
+	background-color: #EBE5DE;
+	width: 20em;
+	height: 20em;
+	border: solid 1px #666666;
+}
+
+.rightFace,
+.leftFace {
+	height: 17em;	
+}
+
+.rightFace,
+.leftFace,
+.topFace {
+	position: absolute;
+}
+ 
+.leftFace {
+	-moz-transform: skew(0deg, 30deg);
+	-webkit-transform: skew(0deg, 30deg);
+	-o-transform: skew(0deg, 30deg);
+	-ms-transform: skew(0deg, 30deg);
+	transform: skew(0deg, 30deg);		
+	
+}
+
+.rightFace {
+	-moz-transform: skew(0deg, -30deg);
+	-webkit-transform: skew(0deg, -30deg);
+	-o-transform: skew(0deg, -30deg);
+	-ms-transform: skew(0deg, -30deg);
+	transform: skew(0deg, -30deg);	
+	
+	
+	left: 20em;
+}
+
+.topFace {
+	-moz-transform: rotate(60deg) skew(0deg, -30deg) scale(1, 1.15);
+	-webkit-transform: rotate(60deg) skew(0deg, -30deg) scale(1, 1.15);
+	-o-transform: rotate(60deg) skew(0deg, -30deg) scale(1, 1.15);
+	-ms-transform: rotate(60deg) skew(0deg, -30deg) scale(1, 1.15);
+	transform: rotate(60deg) skew(0deg, -30deg) scale(1, 1.15);	
+	top: -15.75em;
+	left: 9.95em;	
+}
+
+
+.cube div.topFace,
+.cube div.rightFace,
+.cube div.leftFace {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.cube div.topFace.video div {
+	background-color: #000;
+	color: #fff;
+}
+
+a { 
+	color: blue;
+}

@@ -1,0 +1,100 @@
+@import "/shared/css/example.css";
+body {text-align :center;background : black;color:white;font-family:verdana;}
+a {text-decoration : none;}
+div{ padding : 1px;	font-size : 44px;}
+
+p {
+	margin: 44px 0 !important;
+}
+
+/*********Glowing Link ***********/
+a.glowlink{
+	color : #ffffff;
+}
+a.glowlink:hover , .glow {
+	color:#FFFFFF ;
+	text-shadow:0 0 20px yellow ;
+	
+}
+
+a.glowlink:hover {
+	background: url(../../../shared/img/trans.png);
+}
+
+.extraGlow {
+color:white;
+text-shadow:0 0 30px yellow, 0 0 70px yellow;
+-sand-chroma-override: white;
+}
+
+/*********Apple Style Text********/
+.applestyle{ 
+	background:#666;
+	-sand-chroma-override: #fffffe;
+	color: #000;
+	text-shadow: 0px 1px 1px #fff;
+}
+/*******Emboss *********/
+.Emboss  {
+	
+	background:#cccccd;
+	-sand-chroma-override: #cccccd;
+	color:#cccccc;
+	text-shadow: -1px -1px white, 1px 1px #333333;
+}
+
+body.ie7 .Emboss {
+	text-shadow: -1px -1px white, 2px 2px #333333;
+}
+/*******Pillow Emboss  *********/
+.PillowEmboss {
+	background:#ccc;
+	-sand-chroma-override: #cccccc;
+	color:#ddd;
+	text-shadow: 1px 1px white, 
+				-1px -1px #444;
+}
+/*******Blurry Text *********/
+/*Source : http://simurai.com/post/684792689/text-blur */
+/* color: transparent; not supported by safari */
+
+.blurytext {
+	color: transparent;
+	text-shadow: 0 0 5px #fff ;
+}
+
+/*******Inset Text *********/
+/* Source:http://stylizedweb.com/2009/10/22/how-to-create-inset-text-with-css3/ */
+.insettext{
+	color: #344251;
+	text-shadow: 1px 1px 0px #bad3ed;
+	font-weight: bold;
+	background:#bad3ed;
+	margin: 40px 0;
+	
+}
+/*****Text Stroke**********/
+.Stroke{
+	color: red;
+	font-weight: bold;
+	
+	background: white;
+	-sand-chroma-override: white;
+}
+
+.Stroke p{
+	text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+/*****Fake 3D Effect **********/
+/* Source : http://css-tricks.com/3d-text-tower/ */
+.effect3D {
+	color:rgba(255,255,0,.7) ;
+	font-weight: bold;
+	text-shadow: 1px 1px rgba(255,128,0,.7), 
+				 2px 2px rgba(255,128,0,.7),  
+				 3px 3px rgba(255,128,0,.7), 
+				 4px 4px rgba(255,128,0,.7),
+				 5px 5px rgba(255,128,0,.7);
+	-sand-chroma-override: #ff8088; /* fills in cracks in the shadow */
+}

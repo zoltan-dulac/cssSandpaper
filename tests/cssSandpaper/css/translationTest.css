@@ -1,4 +1,5 @@
 @import "../../shared/css/reset.css";
+@import "/shared/css/example.css";
 
 body {
 	font-family: "Arial", sans-serif;

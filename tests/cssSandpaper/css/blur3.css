@@ -1,0 +1,21 @@
+@import "/shared/css/example.css";
+@import "/shared/fonts/GraublauWeb/stylesheet.css";
+
+#intro { 
+	 /* -sand-transform: rotate(34deg); */
+}
+
+#intro p {
+	 font-family: "GraublauWeb-Bold", "Arial", "Helvetica", sans-serif;
+	 font-size: 2em;
+	 font-weight: bold;
+	 margin: 0 auto;
+	
+}
+
+#intro p {
+	-sand-chroma-override: white;
+     text-shadow: 3px 3px 3px #cccccc;
+     width: 230px;
+	
+}

@@ -1,0 +1,33 @@
+@import "/shared/fonts/Fritz/stylesheet.css";
+
+body {
+	color: #d6e2fc;
+	background: black;
+}
+
+#title {
+	font-family: "Fritz-Quad", "Garamond", serif;
+	font-size: 110px;
+	text-align: center;
+	margin-top: 200px;
+	text-transform: uppercase;
+}
+
+#css3And {
+	-sand-chroma-override: #111111;
+	text-shadow: -8px 0px 0px #0f1128,
+		-16px 0px 8px rgb(50, 152, 234),
+		-20px 0px 8px rgba(50, 152, 234, 0.3),
+		-16px -8px 8px rgba(50, 152, 234, 0.6),
+		-16px 8px 8px rgba(50, 152, 234, 0.6)
+		;
+}
+#html5 {
+	-sand-chroma-override: #111111;
+	text-shadow: -8px 0px 0px #0f1128,
+		-16px 0px 8px rgb(143, 14, 18),
+		-20px 0px 8px rgba(143, 14, 18, 0.3),
+		-16px -8px 8px rgba(143, 14, 18, 0.6),
+		-16px 8px 8px rgba(143, 14, 18, 0.6)
+		;
+}

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+
+  <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+  <!--[if IE]><![endif]-->
+
+  <title></title>
+  <link href="css/textShadow-tableTest.css" type="text/css" rel="stylesheet" />
+  
+ 
+  <script type="text/javascript" src="../../shared/js/EventHelpers.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/asamuzak.jp/textshadow.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+		</script>
+	<script type="text/javascript" src="../../shared/js/cssSandpaper.js"></script>
+
+</head>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 cssSandpaper-noMSTransform "> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+
+<table class="dataTable">
+<thead>
+<tr>
+<th>
+Live CSS/HTML
+</th>
+<th class="screenshot">
+Firefox<br />Screenshot
+</th>
+<th class="screenshot">
+IE9<br />Screenshot
+
+</th>
+<th>
+Text-Shadow Syntax<br />
+</tr>
+</thead>
+<tbody>
+<tr  id="example1">
+<td  class="example">
+<span><strong>Simple</strong></span>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie01.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff01.png" alt=""  />
+
+</td>
+<td class="code">
+<pre>
+2px 2px 0 #E51919;
+</pre>
+</td>
+</tr>
+<tr id="example2">
+<td  class="example">
+<span>Blurred</span>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie02.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff02.png" alt=""  />
+
+</td>
+<td class="code">
+<pre>
+3px 3px 3px #B24C4C;
+</pre>
+</td>
+</tr>
+<tr id="example3">
+<td  class="example">
+Etched
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie03.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff03.png" alt=""  />
+</td>
+
+<td class="code">
+<pre>
+0px 1px 0px white
+</pre>
+</td>
+</tr>
+<tr  id="example4">
+<td  class="example">
+Flaming
+</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie04.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff04.png" alt=""  /></td>
+<td class="code">
+<pre>
+0 0 4px white, 0 -5px 4px #FFFF33,
+2px -10px 6px #FFDD33,  -2px -15px 11px #FF8800,
+2px -25px 18px #FF2200; </pre>
+</td>
+
+</tr>
+<tr  id="example5">
+<td  class="example">
+Neon
+</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie05.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff05.png" alt=""  /></td>
+<td class="code">
+<pre>
+0 0 1px #fff, 0 0 2px #fff,
+0 0 3px #fff, 0 0 4px #ff00de,
+0 0 7px #ff00de, 0 0 8px #ff00de,
+0 0 10px #ff00de, 0 0 15px #ff00de;
+</pre>
+</td>
+</tr>
+<tr  id="example6">
+<td  class="example">
+Outlined
+</td>
+
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie06.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff06.png" alt=""  />
+</td>
+<td class="code">
+<pre>
+0 0 3px #fff
+</pre>
+</td>
+</tr>
+<tr  id="example7" >
+<td class="example">
+Glowing
+</td>
+<td>
+
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie07.png" alt=""  />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff07.png" alt=""  />
+</td>
+<td class="code">
+<pre>
+0 0 20px yellow, 0 0 60px yellow
+</pre>
+</td>
+</tr>
+<tr  id="example8">
+<td  class="example">
+Embossed
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie08.png" alt=""  />
+
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff08.png" alt=""  />
+</td>
+<td class="code">
+<pre>
+-1px -1px white, 1px 1px #333333
+</pre>
+</td>
+</tr>
+<tr  id="example9">
+<td  class="example">
+Pillow
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ie09.png" alt=""  />
+</td>
+
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/05/ff09.png" alt=""  />
+</td>
+<p>http://www.useragentman.com/blog/wp-admin/post.php?post=3296&#038;action=edit&#038;message=10</p>
+<td class="code">
+<pre>
+1px 1px white,
+-1px -1px #444
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+
+  
+</body>
+</html>
