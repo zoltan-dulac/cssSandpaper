@@ -72,9 +72,9 @@ var cssSandpaper = new function(){
         
 		setChromaOverrides();
 		fixTransforms();
-		if (window.textShadowForMSIE) {
-			fixTextShadows();
-		}
+		
+		fixTextShadows();
+		
         
         fixBoxShadow();
         fixLinearGradients();
@@ -171,23 +171,34 @@ var cssSandpaper = new function(){
     }
 	
 	function fixTextShadows() {
-		var rules = getRuleList('text-shadow').values;
-        var property = CSS3Helpers.findProperty(document.body, 'text-shadow');
+		var rules = getRuleList('-sand-text-shadow').values;
+        var property = CSS3Helpers.findProperty(document.body, 'textShadow');
         
-		if (property == 'filter') {
+		if (property == 'filter' && window.textShadowForMSIE == undefined) {
+			// The text-shadow library is not loaded. Bail.
+			return;
+		}
 			
 			for (var i in rules) {
 				var rule = rules[i];
 				
 				var sels = rule.selector.split(',');
-				
-				for (var j in sels)
-				textShadowForMSIE.ieShadowSettings.push({
-					sel: sels[j],
-					shadow: rule.value
-				});
+				if (property == 'filter') {
+					for (var j in sels) {
+						textShadowForMSIE.ieShadowSettings.push({
+							sel: sels[j],
+							shadow: rule.value
+						});
+					}
+				} else {
+					var nodes = document.querySelectorAll(rule.selector);
+            
+		            for (var j = 0; j < nodes.length; j++) {
+		                nodes[j].style[property] =  rule.value;
+		            }
+				}
 			}
-		}
+		
 		
 		textShadowForMSIE.init()
 	}

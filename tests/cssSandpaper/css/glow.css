@@ -3,7 +3,7 @@
 .test1 {
 	background-color: white;
 	zoom: 1;
-	text-shadow: 2px 2px 4px #555555;
+	-sand-text-shadow: 2px 2px 4px #555555;
 	filter:
 		
 		progid:DXImageTransform.Microsoft.Chroma(color='white'),
@@ -15,7 +15,7 @@
 	position: relative;
 	
 	
-	text-shadow: 
+	-sand-text-shadow: 
 		1px -1px 5px white,
 		-1px 1px 5px white,
 		1px 1px 5px white,
@@ -61,7 +61,7 @@ body.ie9 .test0 p {
 	background: url('../images/sky.jpg') #243165;
 	color: black;
 	-sand-transform: rotate(45deg);
-	text-shadow: 
+	-sand-text-shadow: 
 		1px -1px 5px rgba(255, 255, 255, 0.5),
 		-1px 1px 5px rgba(255, 255, 255, 0.5),
 		1px 1px 5px rgba(255, 255, 255, 0.5),
@@ -92,7 +92,7 @@ body.ie9 #sky p {
 #clouds {
 	-sand-transform: skewX(-45deg);
 	background: url('/border-image/images/backgrounds/clouds.jpg') #c9d0e0;
-	text-shadow: 1px -1px 2px #cccccc,
+	-sand-text-shadow: 1px -1px 2px #cccccc,
 		-1px 1px 2px #666666,
 		1px 1px 2px #666666,
 		-1px -1px 2px #666666,

@@ -20,7 +20,7 @@
 }
 
 #intro p, #intro p:before {
-     text-shadow: 3px 3px 3px #cccccc;
+     -sand-text-shadow: 3px 3px 3px #cccccc;
      width: 230px;
 	
 }

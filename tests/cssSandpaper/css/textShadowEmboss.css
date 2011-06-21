@@ -12,7 +12,7 @@
 }
 
 #small p {
-	text-shadow: 0px 1px 0px #e5e5ee;
+	-sand-text-shadow: 0px 1px 0px #e5e5ee;
 	-sand-chroma-override: #cccccc;
 }
 
@@ -30,7 +30,7 @@
 #large p, #rotated p {
 	
 	font-size: 25px;
-	text-shadow: 0px 1px 0px #e5e5ee, 0px 2px 0px #e5e5ee;
+	-sand-text-shadow: 0px 1px 0px #e5e5ee, 0px 2px 0px #e5e5ee;
 	-sand-chroma-override: #cccccc;
 }
 
