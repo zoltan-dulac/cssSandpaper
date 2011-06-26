@@ -47,6 +47,7 @@ var cssSandpaper = new function(){
     var reAtRule = /@[^\{\};]*;|@[^\{\};]*\{[^\}]*\}/g;
     
     var reFunctionSpaces = /\(\s*/g
+    var reMatrixFunc = /matrix\(([^\,]+),([^\,]+),([^\,]+),([^\,]+),([^\,]+),([^\,]+)\)/g
     
     
     var ruleLists = new Array();
@@ -148,7 +149,21 @@ var cssSandpaper = new function(){
             var matrix = CSS3Helpers.getTransformationMatrix(transformString);
             CSS3Helpers.setMatrixFilter(obj, matrix)
         } else if (obj.style[property] != null) {
-            obj.style[property] = transformString;
+			/*
+			 * Firefox likes the matrix notation to be like this: 
+			 *   matrix(4.758, -0.016, -0.143, 1.459, -7.058px, 85.081px);
+			 * All others like this:
+			 *   matrix(4.758, -0.016, -0.143, 1.459, -7.058, 85.081);
+			 * (Note the missing px strings at the end of the last two parameters)
+			 */ 
+			
+			
+			
+			var agentTransformString = transformString;
+			if (property == "MozTransform") {
+				agentTransformString = agentTransformString.replace(reMatrixFunc, 'matrix($1, $2, $3, $4, $5px, $6px)');
+			}
+            obj.style[property] = agentTransformString;
         }
     }
     
@@ -171,7 +186,7 @@ var cssSandpaper = new function(){
     }
 	
 	function fixTextShadows() {
-		var rules = getRuleList('-sand-text-shadow').values;
+		var rules = getRuleList('text-shadow').values;
         var property = CSS3Helpers.findProperty(document.body, 'textShadow');
         
 		if (property == 'filter' && window.textShadowForMSIE == undefined) {
@@ -1292,7 +1307,7 @@ var CSS3Helpers = new function(){
             obj.style.position = 'absolute';
             container.appendChild(obj);
             parentNode.insertBefore(container, replacement);
-            //container.style.backgroundColor = 'transparent';
+            container.style.backgroundColor = 'transparent';
             
             container.style.padding = '0';
             //var background = cssSandpaper.getChromaColor(obj);

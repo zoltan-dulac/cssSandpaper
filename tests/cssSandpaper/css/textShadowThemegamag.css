@@ -1,4 +1,4 @@
-@import "/shared/css/example.css";
+@import "../../../shared/css/example.css";
 body {text-align :center;background : black;color:white;font-family:verdana;}
 a {text-decoration : none;}
 div{ padding : 1px;	font-size : 44px;}
@@ -13,7 +13,7 @@ a.glowlink{
 }
 a.glowlink:hover , .glow {
 	color:#FFFFFF ;
-	-sand-text-shadow:0 0 20px yellow ;
+	text-shadow:0 0 20px yellow ;
 	
 }
 
@@ -23,7 +23,7 @@ a.glowlink:hover {
 
 .extraGlow {
 color:white;
--sand-text-shadow:0 0 30px yellow, 0 0 70px yellow;
+text-shadow:0 0 30px yellow, 0 0 70px yellow;
 -sand-chroma-override: white;
 }
 
@@ -32,7 +32,7 @@ color:white;
 	background:#666;
 	-sand-chroma-override: #fffffe;
 	color: #000;
-	-sand-text-shadow: 0px 1px 1px #fff;
+	text-shadow: 0px 1px 1px #fff;
 }
 /*******Emboss *********/
 .Emboss  {
@@ -40,18 +40,18 @@ color:white;
 	background:#cccccd;
 	-sand-chroma-override: #cccccd;
 	color:#cccccc;
-	-sand-text-shadow: -1px -1px white, 1px 1px #333333;
+	text-shadow: -1px -1px white, 1px 1px #333333;
 }
 
 body.ie7 .Emboss {
-	-sand-text-shadow: -1px -1px white, 2px 2px #333333;
+	text-shadow: -1px -1px white, 2px 2px #333333;
 }
 /*******Pillow Emboss  *********/
 .PillowEmboss {
 	background:#ccc;
 	-sand-chroma-override: #cccccc;
 	color:#ddd;
-	-sand-text-shadow: 1px 1px white, 
+	text-shadow: 1px 1px white, 
 				-1px -1px #444;
 }
 /*******Blurry Text *********/
@@ -60,14 +60,14 @@ body.ie7 .Emboss {
 
 .blurytext {
 	color: transparent;
-	-sand-text-shadow: 0 0 5px #fff ;
+	text-shadow: 0 0 5px #fff ;
 }
 
 /*******Inset Text *********/
 /* Source:http://stylizedweb.com/2009/10/22/how-to-create-inset-text-with-css3/ */
 .insettext{
 	color: #344251;
-	-sand-text-shadow: 1px 1px 0px #bad3ed;
+	text-shadow: 1px 1px 0px #bad3ed;
 	font-weight: bold;
 	background:#bad3ed;
 	margin: 40px 0;
@@ -83,7 +83,7 @@ body.ie7 .Emboss {
 }
 
 .Stroke p{
-	-sand-text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000;
+	text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
 /*****Fake 3D Effect **********/
@@ -91,7 +91,7 @@ body.ie7 .Emboss {
 .effect3D {
 	color:rgba(255,255,0,.7) ;
 	font-weight: bold;
-	-sand-text-shadow: 1px 1px rgba(255,128,0,.7), 
+	text-shadow: 1px 1px rgba(255,128,0,.7), 
 				 2px 2px rgba(255,128,0,.7),  
 				 3px 3px rgba(255,128,0,.7), 
 				 4px 4px rgba(255,128,0,.7),

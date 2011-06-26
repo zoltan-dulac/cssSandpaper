@@ -1,8 +1,8 @@
-@import "/shared/css/example.css";
+@import "../../../shared/css/example.css";
 
 #hot {
 	color: white;
-	-sand-text-shadow: 0 0 4px white, 
+	text-shadow: 0 0 4px white, 
 		0 -5px 4px #FFFF33, 
 		2px -10px 6px #FFDD33, 
 		-2px -15px 11px #FF8800, 

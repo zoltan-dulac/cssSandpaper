@@ -15,7 +15,7 @@
 
 #intro p {
 	-sand-chroma-override: white;
-     -sand-text-shadow: 3px 3px 3px #cccccc;
+     text-shadow: 3px 3px 3px #cccccc;
      width: 230px;
 	
 }

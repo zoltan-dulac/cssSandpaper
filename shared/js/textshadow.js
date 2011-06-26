@@ -16,7 +16,9 @@
 var textShadowForMSIE = new function (){
 	var me = this;
 	
-	var ieShadowSettings = new Array();
+	var sId = 0;
+	
+	me.ieShadowSettings = new Array();
 
 	var isMSIE = /*@cc_on!@*/ false;
 	var ieVersion = (function(reg){
@@ -91,7 +93,41 @@ var textShadowForMSIE = new function (){
 	    }
 	}
 	
+	
+	
+	/* Taken from http://blog.stchur.com/2006/09/20/converting-to-pixels-with-javascript/ */
+	function toPixels (_str, _context)
+	{
+	  if (/px$/.test(_str)) { return parseInt(_str); }
+	
+	  var tmp = document.createElement('div');
+	  tmp.style.visbility = 'hidden';
+	  tmp.style.position = 'absolute';
+	  tmp.style.lineHeight = '0';
+	
+	  if (/%$/.test(_str))
+	  {
+	    _context = _context.parentNode || _context;
+	    tmp.style.height = _str;
+	  }
+	  else
+	  {
+	    tmp.style.borderStyle = 'solid';
+	    tmp.style.borderBottomWidth = '0';
+	    tmp.style.borderTopWidth = _str;
+	  }
+	
+	  if (!_context) { _context = document.body; }
+	
+	  _context.appendChild(tmp);
+	  var px = tmp.offsetHeight;
+	  _context.removeChild(tmp);
+	
+	  return px ;
+	};
+	
 	function convUnitToPx(sUnit, obj){
+		
 	    var getUnitRatio = function(sUnit){
 	        var dId = cNum(), dBox = document.createElement('div');
 	        dBox.id = 'dummyDiv' + dId;
@@ -105,93 +141,120 @@ var textShadowForMSIE = new function (){
 	        dBody.removeChild(elm);
 	        return val >= 0 ? val : val * -1;
 	    };
-	    if (sUnit.match(/^0(em|ex|px|cm|mm|in|pt|pc)?$/)) {
-	        return 0;
-	    }
-	    else 
-	        if (sUnit.match(/^(\-?[0-9\.]+)px$/)) {
-	            return RegExp.$1 * 1;
-	        }
-	        else 
-	            if (sUnit.match(/^(\-?[0-9\.]+)(cm|mm|in|pt|pc)$/)) {
-	                return RegExp.$1 * 1 >= 0 ? getUnitRatio(sUnit) : getUnitRatio((RegExp.$1 * -1) + RegExp.$2) * -1;
-	            }
-	            else 
-	                if (sUnit.match(/^(\-?[0-9\.]+)(em|ex)$/)) {
-	                    var val = getUnitRatio(sUnit) / getUnitRatio('1' + RegExp.$2);
-	                    var aArr = getAncestObj(obj), dRoot = document.getElementsByTagName('html')[0], fSize = [];
-	                    aArr.unshift(obj);
-	                    aArr[aArr.length] = dRoot;
-	                    for (var i = 0, l = aArr.length; i < l; i++) {
-	                        fSize[fSize.length] = getCompStyle(aArr[i]).fontSize;
-	                    }
-	                    for (i = 0, l = fSize.length; i < l; i++) {
-	                        if (fSize[i].match(/^([0-9\.]+)%$/)) {
-	                            val *= (RegExp.$1 / 100);
-	                        }
-	                        else 
-	                            if (fSize[i].match(/^([0-9\.]+)(em|ex)$/)) {
-	                                val *= (getUnitRatio(fSize[i]) / getUnitRatio('1' + RegExp.$2));
-	                            }
-	                            else 
-	                                if (fSize[i].match(/^smaller$/)) {
-	                                    val /= 1.2;
-	                                }
-	                                else 
-	                                    if (fSize[i].match(/^larger$/)) {
-	                                        val *= 1.2;
-	                                    }
-	                                    else 
-	                                        if (fSize[i].match(/^([0-9\.]+)(px|cm|mm|in|pt|pc)$/)) {
-	                                            val *= getUnitRatio(fSize[i]);
-	                                            break;
-	                                        }
-	                                        else 
-	                                            if (fSize[i].match(/^xx\-small$/)) {
-	                                                val *= (getUnitRatio(getCompStyle(dRoot).fontSize) / 1.728);
-	                                                break;
-	                                            }
-	                                            else 
-	                                                if (fSize[i].match(/^x\-small$/)) {
-	                                                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) / 1.44);
-	                                                    break;
-	                                                }
-	                                                else 
-	                                                    if (fSize[i].match(/^small$/)) {
-	                                                        val *= (getUnitRatio(getCompStyle(dRoot).fontSize) / 1.2);
-	                                                        break;
-	                                                    }
-	                                                    else 
-	                                                        if (fSize[i].match(/^medium$/)) {
-	                                                            val *= getUnitRatio(getCompStyle(dRoot).fontSize);
-	                                                            break;
-	                                                        }
-	                                                        else 
-	                                                            if (fSize[i].match(/^large$/)) {
-	                                                                val *= (getUnitRatio(getCompStyle(dRoot).fontSize) * 1.2);
-	                                                                break;
-	                                                            }
-	                                                            else 
-	                                                                if (fSize[i].match(/^x\-large$/)) {
-	                                                                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) * 1.44);
-	                                                                    break;
-	                                                                }
-	                                                                else 
-	                                                                    if (fSize[i].match(/^xx\-large$/)) {
-	                                                                        val *= (getUnitRatio(getCompStyle(dRoot).fontSize) * 1.728);
-	                                                                        break;
-	                                                                    }
-	                                                                    else 
-	                                                                        if (fSize[i].match(/^([0-9\.]+)([a-z]+)/)) {
-	                                                                            val *= getUnitRatio(fSize[i]);
-	                                                                            break;
-	                                                                        }
-	                                                                        else {
-	                                                                            break;
-	                                                                        }
-	                    }
-	                    return Math.round(val);
-	                }
+        
+
+        
+        if (sUnit.match(/^0(em|ex|px|cm|mm|in|pt|pc)?$/)) {
+        
+            return 0;
+            
+        } else if (sUnit.match(/^(\-?[0-9\.]+)px$/)) {
+        
+            return RegExp.$1 * 1;
+            
+        } else if (sUnit.match(/^(\-?[0-9\.]+)(cm|mm|in|pt|pc)$/)) {
+        
+            return RegExp.$1 * 1 >= 0 ? getUnitRatio(sUnit) : getUnitRatio((RegExp.$1 * -1) + RegExp.$2) * -1;
+            
+        } else if (sUnit.match(/^(\-?[0-9\.]+)(em|ex)$/)) {
+        
+            var val = getUnitRatio(sUnit) / getUnitRatio('1' + RegExp.$2);
+            
+            var aArr = getAncestObj(obj), dRoot = document.getElementsByTagName('html')[0], fSize = [];
+            
+            aArr.unshift(obj);
+            
+            aArr[aArr.length] = dRoot;
+            
+            for (var i = 0, l = aArr.length; i < l; i++) {
+            
+                fSize[fSize.length] = getCompStyle(aArr[i]).fontSize;
+                
+            }
+            
+            for (i = 0, l = fSize.length; i < l; i++) {
+            
+                if (fSize[i].match(/^([0-9\.]+)%$/)) {
+                
+                    val *= (RegExp.$1 / 100);
+                    
+                } else if (fSize[i].match(/^([0-9\.]+)(em|ex)$/)) {
+                
+                    val *= (getUnitRatio(fSize[i]) / getUnitRatio('1' + RegExp.$2));
+                    
+                } else if (fSize[i].match(/^smaller$/)) {
+                
+                    val /= 1.2;
+                    
+                } else if (fSize[i].match(/^larger$/)) {
+                
+                    val *= 1.2;
+                    
+                } else if (fSize[i].match(/^([0-9\.]+)(px|cm|mm|in|pt|pc)$/)) {
+                
+                    val *= getUnitRatio(fSize[i]);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^xx\-small$/)) {
+                
+                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) / 1.728);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^x\-small$/)) {
+                
+                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) / 1.44);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^small$/)) {
+                
+                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) / 1.2);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^medium$/)) {
+                
+                    val *= getUnitRatio(getCompStyle(dRoot).fontSize);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^large$/)) {
+                
+                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) * 1.2);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^x\-large$/)) {
+                
+                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) * 1.44);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^xx\-large$/)) {
+                
+                    val *= (getUnitRatio(getCompStyle(dRoot).fontSize) * 1.728);
+                    
+                    break;
+                    
+                } else if (fSize[i].match(/^([0-9\.]+)([a-z]+)/)) {
+                
+                    val *= getUnitRatio(fSize[i]);
+                    
+                    break;
+                    
+                } else {
+                
+                    break;
+                    
+                }
+                
+            }
+            
+            return Math.round(val);
+            
+        }
 	}
 	
 	function removeDupFunc(fStr){
@@ -218,11 +281,11 @@ var textShadowForMSIE = new function (){
 	    }
 	})(0);
 	
-	function showElm(eId){
+	me.showElm = function (eId){
 	    eId.style.visibility = 'visible';
 	}
 	
-	function hideElm(eId){
+	me.hideElm = function (eId){
 	    eId.style.visibility = 'hidden';
 	}
 	
@@ -283,8 +346,8 @@ var textShadowForMSIE = new function (){
                 mOut != '' && !mOut.match(/;$/) && (mOut += ';');
                 for (i = 0, l = arr.length; i < l; i++) {
                     if (tObj.ePseudo == 'hover' && tObj.shadow == 'none') {
-                        mOver += 'hideElm(' + arr[i] + ');';
-                        mOut += 'showElm(' + arr[i] + ');';
+                        mOver += 'textShadowForMSIE.hideElm(' + arr[i] + ');';
+                        mOut += 'textShadowForMSIE.showElm(' + arr[i] + ');';
                     }
                     else 
                         if (!(tObj.ePseudo == 'hover' && tObj.shadow != 'none')) {
@@ -317,15 +380,16 @@ var textShadowForMSIE = new function (){
                     ieVersion == 8 && (tObj.elm.innerHTML = tObj.elm.innerHTML);
                     var zIndexPlace = -1;
                     for (i = 0, l = tObj.shadow.length; i < l; i++) {
-                    
+                    	
                         var pxRad = convUnitToPx(tObj.shadow[i].z, tObj.elm);
                         
                         var xPos = convUnitToPx(tObj.shadow[i].x, tObj.elm) - pxRad + convUnitToPx(getCompStyle(tObj.elm).paddingLeft, tObj.elm);
                         var yPos = convUnitToPx(tObj.shadow[i].y, tObj.elm) - pxRad + convUnitToPx(getCompStyle(tObj.elm).paddingTop, tObj.elm);
-                        if (ieVersion == 7 && pxRad == 0) {
+                        /* if (ieVersion == 7 && pxRad == 0) {
                             xPos >= 0 && (xPos -= 1);
                             yPos >= 0 && (yPos -= 1);
-                        }
+                        } */
+						
                         var sColor = tObj.shadow[i].cProf || getCompStyle(tObj.elm).color;
                         var sOpacity = 1; // デフォルトの透過度
                         tObj.shadow[i].cProf != null && tObj.shadow[i].cProf.match(/rgba\(\s*([0-9]+\s*,\s*[0-9]+\s*,\s*[0-9]+)\s*,\s*([01]?[\.0-9]*)\)/) && (sColor = 'rgb(' + RegExp.$1 + ')', sOpacity = (RegExp.$2 * 1));
@@ -339,60 +403,7 @@ var textShadowForMSIE = new function (){
                         sBox.style.top = yPos + 'px';
                         sBox.style.width = '100%';
 						
-                        if (ieVersion == 7 && tObj.elm.style.lineHeight.trim() == '') {
-							//sBox.style.marginTop = '-' + tObj.elm.currentStyle.paddingTop;
-							var lineHeight = tObj.elm.currentStyle.lineHeight;
-							var firstChildMarginTop = tObj.elm.firstChild
-							if (tObj.elm.nodeName == 'TD') {
-								sBox.style.left = xPos + 1 + 'px';
-								sBox.style.top = yPos + 1 + 'px';
-							} else {
-								
-								if (parseInt(lineHeight).toString() == lineHeight) {
-									//console.log(StringHelpers.sprintf('%s %s %s %s', tObj.elm.innerText, tObj.elm.currentStyle.lineHeight, tObj.elm.offsetHeight, tObj.elm.currentStyle.margin));
-									sBox.style.lineHeight = tObj.elm.currentStyle.lineHeight * parseFloat(tObj.elm.offsetHeight) + 'px';
-									var first = firstElementChild(tObj.elm);
-									if (first != null) {
-										var marginTop = first.currentStyle.marginTop;
-										sBox.style.marginTop = -(convUnitToPx(marginTop, tObj.elm));
-									}
-								}
-							} 
-							
-							
-							
-							
-							
-							
-							
-							/* else if (tObj.elm.currentStyle.lineHeight == '1' && tObj.elm.currentStyle.paddingTop == '0px') { //} && tObj.elm.currentStyle.marginTop == '0px') {
-								sBox.style.lineHeight = 'normal';
-								console.log('normal')
-							} else {
-								sBox.style.lineHeight = tObj.elm.currentStyle.lineHeight;
-								console.log('lineHeight')
-							} */
-							
-							
-							/* } else {
-								sBox.style.padding = tObj.elm.currentStyle.padding;
-								sBox.style.margin = tObj.elm.currentStyle.margin;
-								sBox.style.lineHeight = tObj.elm.currentStyle.lineHeight;
-							} */
-							
-						} else if (ieVersion == 8  && tObj.elm.currentStyle.display == 'block') {
-							sBox.style.left = xPos  + 'px';
-                        	sBox.style.top = yPos + 1 + 'px';
-						} else if (ieVersion == 9  && tObj.elm.currentStyle.display == 'block') {
-							sBox.style.left = xPos  + 'px';
-                        	sBox.style.top = yPos - 1 + 'px';
-						}
-						
-						if ((ieVersion ==7 || ieVersion == 8 ) && tObj.elm.nodeName != 'TD') {
-							/* Under what condition do we do this? */	 
-							sBox.style.paddingTop = tObj.elm.currentStyle.paddingTop;
-							sBox.style.paddingLeft = tObj.elm.currentStyle.paddingLeft;
-						}
+                        
                         sBox.style.color = sColor;
                         //sBox.style.zoom = '100%';
                         
@@ -403,13 +414,8 @@ var textShadowForMSIE = new function (){
                         }
                         
                         sBox.style.backgroundColor = background;
-                        /* var filter = CSS3Helpers.addFilter(sBox, 'DXImageTransform.Microsoft.Chroma', StringHelpers.sprintf("color=%s", background));
-                         filter.color = values.background;
-                         filter = CSS3Helpers.addFilter(sBox, 'DXImageTransform.Microsoft.Blur', StringHelpers.sprintf("PixelRadius='%s', MakeShadow=false, ShadowOpacity='%s'",  pxRad, sOpacity));
-                         filter.pixelRadius = pxRad;
-                         filter.shadowOpacity = sOpacity; */
+                        
                         sBox.style.filter = 'progid:DXImageTransform.Microsoft.Chroma(color=' + background + '), progid:DXImageTransform.Microsoft.Blur(PixelRadius=' + pxRad + ', MakeShadow=false, ShadowOpacity=' + sOpacity + ')';
-                        //sBox.style.filter = 'progid:DXImageTransform.Microsoft.Blur(PixelRadius=' + pxRad + ', MakeShadow=false, ShadowOpacity=' + sOpacity + ')';
                         sBox.style.zIndex = -(i + 1);
                         sBox.innerHTML = sNode;
                         if (getCompStyle(tObj.elm).display == 'inline') {
@@ -417,7 +423,7 @@ var textShadowForMSIE = new function (){
                         }
                         if (!(getCompStyle(tObj.elm).position == 'absolute' || getCompStyle(tObj.elm).position == 'fixed')) {
                             tObj.elm.style.position = 'relative';
-                            ieVersion == 7 && tObj.elm.nodeName != 'TD' && (tObj.elm.style.top = getCompStyle(tObj.elm).paddingTop);
+                            ieVersion == 7 && (tObj.elm.nodeName != 'TD' && tObj.elm.nodeName != 'TH' )  && (tObj.elm.style.top = getCompStyle(tObj.elm).paddingTop );
                         }
                         if (getCompStyle(tObj.elm).backgroundColor != 'transparent' || getCompStyle(tObj.elm).backgroundImage != 'none') {
                             getCompStyle(tObj.elm).zIndex != ('auto' || null) ? (sBox.style.zIndex = tObj.elm.style.zIndex) : (tObj.elm.style.zIndex = sBox.style.zIndex = -1);
@@ -437,14 +443,14 @@ var textShadowForMSIE = new function (){
                             mOut = tObj.elm.getAttribute('onmouseout') || '';
                             mOver != '' && !mOver.match(/;$/) && (mOver += ';');
                             mOut != '' && !mOut.match(/;$/) && (mOut += ';');
-                            mOver += ('showElm(' + sBox.id + ');');
-                            mOut += ('hideElm(' + sBox.id + ');');
+                            mOver += ('textShadowForMSIE.showElm(' + sBox.id + ');');
+                            mOut += ('textShadowForMSIE.hideElm(' + sBox.id + ');');
                             if (hArr.length > 0) {
                                 for (j = 0, k = hArr.length; j < k; j++) {
                                     var hElm = document.getElementById(hArr[j]);
                                     if (hElm) {
-                                        mOver += ('hideElm(' + hElm.id + ');');
-                                        mOut += ('showElm(' + hElm.id + ');');
+                                        mOver += ('textShadowForMSIE.hideElm(' + hElm.id + ');');
+                                        mOut += ('textShadowForMSIE.showElm(' + hElm.id + ');');
                                     }
                                 }
                             }
@@ -461,7 +467,11 @@ var textShadowForMSIE = new function (){
     };
     var getTargetObj = function(sObj){
         var getObjType = function(oElm){
-            return oElm.id != null ? document.getElementById(oElm.id) : document.getElementsByTagName(oElm.elm);
+			if (!oElm) {
+				return null;
+			} else {
+				return oElm.id != null ? document.getElementById(oElm.id) : document.getElementsByTagName(oElm.elm);
+			}
         };
         var compareObj = function(rObj, cObj){
             return ((rObj.id != null && cObj.id != null && rObj.id == cObj.id) || rObj.id == null || cObj.id == null) &&
@@ -471,104 +481,18 @@ var textShadowForMSIE = new function (){
         var elm = getObjType(sObj.tElm);
         var tObj = {
             elm: null,
-            ePseudo: sObj.tElm.ePseudo,
+            ePseudo: sObj.tElm?sObj.tElm.ePseudo:null,
             shadow: sObj.sVal,
             hasImp: sObj.sImp
         };
-        if (elm) {
-            if (sObj.type == 'single') {
-                if (elm.id && compareObj(sObj.tElm, elm)) {
-                    tObj.elm = elm;
-                    setShadow(tObj);
-                }
-                else {
-                    for (var i = 0, l = elm.length; i < l; i++) {
-                        if (compareObj(sObj.tElm, elm[i])) {
-                            tObj.elm = elm[i];
-                            setShadow(tObj);
-                        }
-                    }
-                }
-            }
-            else 
-                if (sObj.type == 'descend' || sObj.type == 'child') {
-                    if (elm.id && compareObj(sObj.tElm, elm)) {
-                        var pElm = elm.parentNode;
-                        if (compareObj(sObj.rElm, pElm)) {
-                            tObj.elm = elm;
-                            setShadow(tObj);
-                        }
-                        else 
-                            if (sObj.type == 'descend') {
-                                for (var aArr = getAncestObj(pElm), i = 0, l = aArr.length; i < l; i++) {
-                                    if (compareObj(sObj.rElm, aArr[i])) {
-                                        tObj.elm = elm;
-                                        setShadow(tObj);
-                                    }
-                                }
-                            }
-                    }
-                    else {
-                        for (var i = 0, l = elm.length; i < l; i++) {
-                            if (compareObj(sObj.tElm, elm[i])) {
-                                var pElm = elm[i].parentNode;
-                                if (compareObj(sObj.rElm, pElm)) {
-                                    tObj.elm = elm[i];
-                                    setShadow(tObj);
-                                }
-                                else 
-                                    if (sObj.type == 'descend') {
-                                        for (var aArr = getAncestObj(pElm), j = 0, k = aArr.length; j < k; j++) {
-                                            if (compareObj(sObj.rElm, aArr[j])) {
-                                                tObj.elm = elm[i];
-                                                setShadow(tObj);
-                                            }
-                                        }
-                                    }
-                            }
-                        }
-                    }
-                }
-                else 
-                    if (sObj.type == 'adjacent' || sObj.type == 'general') {
-                        if (elm.id && compareObj(sObj.tElm, elm) && elm.previousSibling != null) {
-                            var pElm = getPrevSibling(elm.previousSibling);
-                            if (pElm && compareObj(sObj.rElm, pElm)) {
-                                tObj.elm = elm;
-                                setShadow(tObj);
-                            }
-                            else 
-                                if (sObj.type == 'general' && pElm.previousSibling != null) {
-                                    for (var cArr = getGeneralObj(pElm), i = 0, l = cArr.length; i < l; i++) {
-                                        if (compareObj(sObj.rElm, cArr[i])) {
-                                            tObj.elm = elm;
-                                            setShadow(tObj);
-                                        }
-                                    }
-                                }
-                        }
-                        else {
-                            for (var i = 0, l = elm.length; i < l; i++) {
-                                if (compareObj(sObj.tElm, elm[i]) && elm[i].previousSibling != null) {
-                                    var pElm = getPrevSibling(elm[i].previousSibling);
-                                    if (pElm && compareObj(sObj.rElm, pElm)) {
-                                        tObj.elm = elm[i];
-                                        setShadow(tObj);
-                                    }
-                                    else 
-                                        if (sObj.type == 'general' && pElm.previousSibling != null) {
-                                            for (var cArr = getGeneralObj(pElm), j = 0, k = cArr.length; j < k; j++) {
-                                                if (compareObj(sObj.rElm, cArr[j])) {
-                                                    tObj.elm = elm[i];
-                                                    setShadow(tObj);
-                                                }
-                                            }
-                                        }
-                                }
-                            }
-                        }
-                    }
+		
+		for (var i = 0, l = sObj.elm.length; i < l; i++) {
+            tObj.elm = sObj.elm[i];
+            setShadow(tObj);
         }
+       
+
+		
     };
     var getShadowValue = function(shadow){
         if (shadow.match(/none/)) {
@@ -615,17 +539,13 @@ var textShadowForMSIE = new function (){
             return null;
         }
     };
-    var distinctSelector = function(sel){
-        var arr = [];
-        sel.match(/^([a-zA-Z0-9#\.:_\-]+)$/) ? arr = ['single', RegExp.$1, null] : sel.match(/^([a-zA-Z0-9#\.:_\-]+)\s+([a-zA-Z0-9#\.:_\-]+)$/) ? arr = ['descend', RegExp.$2, RegExp.$1] : sel.match(/^([a-zA-Z0-9#\.:_\-]+)\s*>\s*([a-zA-Z0-9#\.:_\-]+)$/) ? arr = ['child', RegExp.$2, RegExp.$1] : sel.match(/^([a-zA-Z0-9#\.:_\-]+)\s*\+\s*([a-zA-Z0-9#\.:_\-]+)$/) ? arr = ['adjacent', RegExp.$2, RegExp.$1] : sel.match(/^([a-zA-Z0-9#\.:_\-]+)\s*~\s*([a-zA-Z0-9#\.:_\-]+)$/) && (arr = ['general', RegExp.$2, RegExp.$1]);
-        return arr;
-    };
+   
     
     me.init = function(){
-		for (var arr = ieShadowSettings, sId = cNum(), i = 0, l = arr.length; i < l; i++) {
+		for (var arr = me.ieShadowSettings, sId = cNum(), i = 0, l = arr.length; i < l; i++) {
 			for (var sSel = arr[i].sel.split(/,/), sReg = /^\s*([a-zA-Z0-9#\.:_\-\s>\+~]+)\s*$/, j = 0, k = sSel.length; j < k; j++) {
 				sSel[j].match(sReg) && (sSel[j] = RegExp.$1);
-				var sArr = distinctSelector(sSel[j].trim());
+				
 				var sObj = {
 					type: null,
 					tElm: null,
@@ -633,16 +553,20 @@ var textShadowForMSIE = new function (){
 					sVal: null,
 					sImp: null
 				};
-				sObj.type = sArr[0];
-				sObj.tElm = getSelectorObj(sArr[1]);
-				sObj.rElm = getSelectorObj(sArr[2]);
+				if (document.querySelectorAll) {
+					sObj.elm = document.querySelectorAll(sSel[j].trim())
+				} else {
+					sObj.elm = cssQuery(sSel[j].trim())
+				}
 				sObj.sVal = getShadowValue(arr[i].shadow);
 				sObj.sImp = arr[i].shadow.match(/important/) ? true : false;
-				try {
+				
+				
+				
+				if (sObj.elm.length > 0) {
 					getTargetObj(sObj);
-				} catch (ex) {
-				//do nothing;
 				}
+				
 			}
 		}
 	}

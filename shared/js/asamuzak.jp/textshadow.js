@@ -93,32 +93,7 @@ var textShadowForMSIE = new function (){
 	    }
 	}
 	
-	var emProperties = ["marginTop", "marginLeft", "marginRight", "marginBottom", "paddingTop", "paddingLeft", "paddingRight", "paddingBottom", "borderTopWidth", "borderBottomWidth", "lineHeight", "fontSize"];
-	var emRegex = /em$/;
-	function fixEmProperties(obj, fixChildren) {
-		 
-		
-		while (obj.nodeName != "HTML") {
-			for (var i = 0; i < emProperties.length; i++) {
-				var propName = emProperties[i];
-				var propVal = obj.currentStyle[propName];
-				if (propVal.match(emRegex)) {
-					window.console.log(StringHelpers.sprintf("%s#%s.%s %s: %s", obj.nodeName, obj.id, obj.className, propName, propVal))
-					fixEm(obj, propName, propVal)
-					
-					var allChildren = obj.getElementsByTagName("*");
-					
-				}
-			}
-			
-			obj = obj.parentNode;
-		}
-	}
 	
-	function fixEm(obj, propName, propVal) {
-		var newPropVal = toPixels(propVal, obj)
-		obj.style[propName] = newPropVal + 'px';
-	}
 	
 	/* Taken from http://blog.stchur.com/2006/09/20/converting-to-pixels-with-javascript/ */
 	function toPixels (_str, _context)
@@ -405,10 +380,7 @@ var textShadowForMSIE = new function (){
                     ieVersion == 8 && (tObj.elm.innerHTML = tObj.elm.innerHTML);
                     var zIndexPlace = -1;
                     for (i = 0, l = tObj.shadow.length; i < l; i++) {
-                    	if (ieVersion >=8) {
-							// This browser has buggy em units.  Let's convert
-							//fixEmProperties(tObj.elm);
-						}
+                    	
                         var pxRad = convUnitToPx(tObj.shadow[i].z, tObj.elm);
                         
                         var xPos = convUnitToPx(tObj.shadow[i].x, tObj.elm) - pxRad + convUnitToPx(getCompStyle(tObj.elm).paddingLeft, tObj.elm);
@@ -431,44 +403,7 @@ var textShadowForMSIE = new function (){
                         sBox.style.top = yPos + 'px';
                         sBox.style.width = '100%';
 						
-                        /* if (ieVersion == 7 && tObj.elm.style.lineHeight.trim() == '') {
-							//sBox.style.marginTop = '-' + tObj.elm.currentStyle.paddingTop;
-							var lineHeight = tObj.elm.currentStyle.lineHeight;
-							var firstChildMarginTop = tObj.elm.firstChild
-							if (tObj.elm.nodeName == 'TD') {
-								sBox.style.left = xPos + 1 + 'px';
-								sBox.style.top = yPos + 1 + 'px';
-							} else {
-								
-								if (parseInt(lineHeight).toString() == lineHeight) {
-									//console.log(StringHelpers.sprintf('%s %s %s %s', tObj.elm.innerText, tObj.elm.currentStyle.lineHeight, tObj.elm.offsetHeight, tObj.elm.currentStyle.margin));
-									sBox.style.lineHeight = tObj.elm.currentStyle.lineHeight * parseFloat(tObj.elm.offsetHeight) + 'px';
-									var first = firstElementChild(tObj.elm);
-									if (first != null) {
-										var marginTop = first.currentStyle.marginTop;
-										sBox.style.marginTop = -(convUnitToPx(marginTop, tObj.elm));
-									}
-								}
-							} 
-							
-							
-							
-						} else if (ieVersion == 8  && tObj.elm.currentStyle.display == 'block') {
-							sBox.style.left = xPos  + 'px';
-                        	sBox.style.top = yPos + 1 + 'px';
-						} else if (ieVersion == 9  && tObj.elm.currentStyle.display == 'block') {
-							sBox.style.left = xPos  + 'px';
-                        	sBox.style.top = yPos - 1 + 'px';
-						}
-						
-						
-						
-						if ((ieVersion ==7 || ieVersion == 8 ) && tObj.elm.nodeName != 'TD') {
-							// Under what condition do we do this? 
-								 
-							sBox.style.paddingTop = tObj.elm.currentStyle.paddingTop;
-							sBox.style.paddingLeft = tObj.elm.currentStyle.paddingLeft;
-						}*/
+                        
                         sBox.style.color = sColor;
                         //sBox.style.zoom = '100%';
                         
@@ -488,7 +423,7 @@ var textShadowForMSIE = new function (){
                         }
                         if (!(getCompStyle(tObj.elm).position == 'absolute' || getCompStyle(tObj.elm).position == 'fixed')) {
                             tObj.elm.style.position = 'relative';
-                            ieVersion == 7 && tObj.elm.nodeName != 'TD' && (tObj.elm.style.top = getCompStyle(tObj.elm).paddingTop );
+                            ieVersion == 7 && (tObj.elm.nodeName != 'TD' && tObj.elm.nodeName != 'TH' )  && (tObj.elm.style.top = getCompStyle(tObj.elm).paddingTop );
                         }
                         if (getCompStyle(tObj.elm).backgroundColor != 'transparent' || getCompStyle(tObj.elm).backgroundImage != 'none') {
                             getCompStyle(tObj.elm).zIndex != ('auto' || null) ? (sBox.style.zIndex = tObj.elm.style.zIndex) : (tObj.elm.style.zIndex = sBox.style.zIndex = -1);
@@ -627,15 +562,11 @@ var textShadowForMSIE = new function (){
 				sObj.sImp = arr[i].shadow.match(/important/) ? true : false;
 				
 				
-				//try {
-					if (sObj.elm.length > 0) {
-						getTargetObj(sObj);
-					}
-				/* } catch (ex) {
-					if (window.console) {
-						window.console.log('failed at: ' + sSel[j])
-					}
-				} */
+				
+				if (sObj.elm.length > 0) {
+					getTargetObj(sObj);
+				}
+				
 			}
 		}
 	}

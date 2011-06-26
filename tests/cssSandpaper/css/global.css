@@ -114,7 +114,7 @@ h1,h3 {
 h1,h2,h3,h4,h5,h6 {
 	letter-spacing: .04em;
 	font-weight: bold;
-	/* -sand-text-shadow: 2px 2px 2px #cccccc; */
+	/* text-shadow: 2px 2px 2px #cccccc; */
 	line-height: 1.2em;
 	font-weight: normal;;
 	margin-bottom: .3em;
@@ -262,7 +262,7 @@ table th {
 table thead th,h6.comments_headers {
 	background: #9C6F39;
 	color: white;
-	-sand-text-shadow: #000000 1px 1px 5px;
+	text-shadow: #000000 1px 1px 5px;
 	border: solid 1px #9C6F39;
 }
 
@@ -444,7 +444,7 @@ code {
 	font-size: 2em;
 	font-weight: normal;
 	margin-bottom: 0 !important;
-	-sand-text-shadow: #000000 2px 2px 5px;
+	text-shadow: #000000 2px 2px 5px;
 }
 
 #head h2 {
@@ -640,7 +640,7 @@ ul#comment_list li.dark {
 	width: 15em;
 	background-color: #4c6874;
 	display: block;
-	-sand-text-shadow: 2px 2px 2px black;
+	text-shadow: 2px 2px 2px black;
 	text-align: center;
 }
 
