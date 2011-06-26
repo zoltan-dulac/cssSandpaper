@@ -774,7 +774,7 @@ var CSS3Helpers = new function(){
     var canvas;
     
     var cache = new Array();
-    
+    var filterDatasetName = 'csssandpaper-filter-';
     
     me.supports = function(cssProperty){
         if (CSS3Helpers.findProperty(document.body, cssProperty) != null) {
@@ -1171,7 +1171,11 @@ var CSS3Helpers = new function(){
 		filter.M12 = matrix.e(1, 2);
 		filter.M21 = matrix.e(2, 1);
 		filter.M22 = matrix.e(2, 2);
-		
+		filter = me.addFilter(obj, 
+			'DXImageTransform.Microsoft.Matrix', 
+			StringHelpers.sprintf("M11=%f, M12=%f, M21=%f, M22=%f, sizingMethod='auto expand'",
+				matrix.e(1, 1), matrix.e(1, 2), matrix.e(2, 1), matrix.e(2, 2)));
+            
 		
 		// Now, adjust the margins of the parent object
 		var offsets = me.getIEMatrixOffsets(obj, matrix, container.xOriginalWidth, container.xOriginalHeight);
@@ -1291,11 +1295,11 @@ var CSS3Helpers = new function(){
             //container.style.backgroundColor = 'transparent';
             
             container.style.padding = '0';
-            var background = cssSandpaper.getChromaColor(obj);
+            //var background = cssSandpaper.getChromaColor(obj);
 			
-			obj.style.backgroundColor = background;
-			filter = CSS3Helpers.addFilter(obj, 'DXImageTransform.Microsoft.Chroma', StringHelpers.sprintf("color=%s", background));
-            filter.color = background;
+			//obj.style.backgroundColor = background;
+			//filter = CSS3Helpers.addFilter(obj, 'DXImageTransform.Microsoft.Chroma', StringHelpers.sprintf("color=%s", background));
+            //sefilter.color = background;
             filter = me.addFilter(obj, 'DXImageTransform.Microsoft.Matrix', "M11=1, M12=0, M21=0, M22=1, sizingMethod='auto expand'")
             var bgImage = obj.currentStyle.backgroundImage.split("\"")[1];
             /*
@@ -1342,39 +1346,48 @@ var CSS3Helpers = new function(){
     
     me.addFilter = function(obj, filterName, filterValue){
         // now ... insert the filter so we can exploit its wonders
-        
+        	
         var filter;
-        try {
-            filter = obj.filters.item(filterName);
-        } 
-        catch (ex) {
-            // dang! We have to go through all of them and make sure filter
-            // is set right before we add the new one.
+        
             
-            
-            var filterList = new MSFilterList(obj)
-            
-            filterList.fixFilterStyle();
-            
-            var comma = ", ";
-            
-            if (obj.filters.length == 0) {
-                comma = "";
-            }
-            
-            obj.style.filter += StringHelpers.sprintf("%sprogid:%s(%s)", comma, filterName, filterValue);
-            
-			
-			try {
-				filter = obj.filters.item(filterName);
-			} catch (ex) {
-				return null;
-			}
-            
+       
+        
+        
+        var comma = ", ";
+        
+        if (obj.filters.length == 0) {
+            comma = "";
         }
         
+        obj.style.filter = getPreviousFilters(obj, filterName) + StringHelpers.sprintf("progid:%s(%s)", filterName, filterValue);
+        
+		
+		try {
+			filter = obj.filters.item(filterName);
+		} catch (ex) {
+			return null;
+		}
+            
+        
+		// set dataset
+		DOMHelpers.setDatasetItem(obj, filterDatasetName + filterName, filterValue.toLowerCase())
         return filter;
     }
+	
+	function getPreviousFilters(obj, exceptFilter) {
+		var r = new StringBuffer();
+		var dataset = DOMHelpers.getDataset(obj);
+		for (var i in dataset) {
+			if (i.indexOf(filterDatasetName) == 0) {
+				var filterName = i.replace(filterDatasetName , "");
+				if (filterName != exceptFilter.toLowerCase()) {
+					r.append(StringHelpers.sprintf("progid:%s(%s) ", filterName, dataset[i]));
+				}
+				
+			}
+		}
+		return r.toString();
+	}
     
     
     function degreesToRadians(degrees){
@@ -1485,113 +1498,9 @@ var CSS3Helpers = new function(){
     
 }
 
-function MSFilterList(node){
-    var me = this;
-    
-    me.list = new Array();
-    me.node = node;
-    
-    var reFilterListSplitter = /[\s\S]*\([\s\S]*\)/g;
-    
-    var styleAttr = node.style;
-    
-    function init(){
-    
-        var filterCalls = styleAttr.filter.match(reFilterListSplitter);
-        
-        if (filterCalls != null) {
-        
-            for (var i = 0; i < filterCalls.length; i++) {
-                var call = filterCalls[i];
-                
-                me.list.push(new MSFilter(node, call));
-                
-            }
-        }
-        
-        
-    }
-    
-    me.toString = function(){
-        var sb = new StringBuffer();
-        
-        for (var i = 0; i < me.list.length; i++) {
-        
-            sb.append(me.list[i].toString());
-            if (i < me.list.length - 1) {
-                sb.append(',')
-            }
-        }
-        return sb.toString();
-    }
-    
-    
-    me.fixFilterStyle = function(){
-    
-        try {
-            me.node.style.filter = me.toString();
-        } 
-        catch (ex) {
-            // do nothing.
-        }
-        
-    }
-    
-    init();
-}
 
-function MSFilter(node, filterCall){
-    var me = this;
-    
-    me.node = node;
-    me.filterCall = filterCall;
-    
-    var reFilterNameSplitter = /progid:([^\(]*)/g;
-    var reParameterName = /([a-zA-Z0-9]+\s*)=/g;
-    
-    
-    function init(){
-        me.name = me.filterCall.match(reFilterNameSplitter)[0].replace('progid:', '');
-        
-        //This may not be the best way to do this.
-        var parameterString = filterCall.split('(')[1].replace(')', '');
-        me.parameters = parameterString.match(reParameterName);
-        
-        for (var i = 0; i < me.parameters.length; i++) {
-            me.parameters[i] = me.parameters[i].replace('=', '');
-        }
-        
-    }
-    
-    me.toString = function(){
-    
-        var sb = new StringBuffer();
-        
-        sb.append(StringHelpers.sprintf('progid:%s(', me.name));
-        
-        for (var i = 0; i < me.parameters.length; i++) {
-            var param = me.parameters[i];
-            var filterObj = me.node.filters.item(me.name);
-            var paramValue = filterObj[param];
-            if (typeof(paramValue) == 'string') {
-                sb.append(StringHelpers.sprintf('%s="%s"', param, filterObj[param]));
-            } else {
-                sb.append(StringHelpers.sprintf('%s=%s', param, filterObj[param]));
-            }
-            
-            if (i != me.parameters.length - 1) {
-                sb.append(', ')
-            }
-        }
-        sb.append(')');
-        
-        return sb.toString();
-    }
-    
-    
-    
-    init();
-}
+
+
 
 var implementation = new function(){
     this.NONE = 0;

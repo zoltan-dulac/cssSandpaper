@@ -126,7 +126,6 @@ h1 {
 
 .rightFace {
 	-sand-transform: skew(0deg, -30deg);
-	
 	background-image: -sand-gradient(linear, center top, center bottom, from(#EBE5DE),
 		to(#ea9b3d) );
 	left: 20em;
