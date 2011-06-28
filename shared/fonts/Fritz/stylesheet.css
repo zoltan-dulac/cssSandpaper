@@ -1,0 +1,24 @@
+
+@font-face {
+	font-family: 'Fritz-Quad';
+	src: url('Fritz-Quad.eot?') format('eot'), 
+	     url('Fritz-Quad.woff') format('woff'), 
+	     url('Fritz-Quad.ttf')  format('truetype'),
+	     url('Fritz-Quad.svg#Fritz-Quad') format('svg');
+}
+
+@font-face {
+	font-family: 'FritzBold';
+	src: url('FritzBold.eot?') format('eot'), 
+	     url('FritzBold.woff') format('woff'), 
+	     url('FritzBold.ttf')  format('truetype'),
+	     url('FritzBold.svg#FritzBold') format('svg');
+}
+
+@font-face {
+	font-family: 'FritzRegular';
+	src: url('FritzRegular.eot?') format('eot'), 
+	     url('FritzRegular.woff') format('woff'), 
+	     url('FritzRegular.ttf')  format('truetype'),
+	     url('FritzRegular.svg#FritzRegular') format('svg');
+}

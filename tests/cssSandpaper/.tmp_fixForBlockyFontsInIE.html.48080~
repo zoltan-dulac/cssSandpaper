@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		
+		<title>Fix for blocky fonts in IE.</title>
+		
+		<style type="text/css">
+			@import "css/global.css";
+			
+			body {
+				font-family: "Graublau Web";
+				background: url(images/background.gif);
+				color: black;
+				
+				font-size: 1em;
+			}
+			
+			.backgroundFix {
+				zoom: 1;
+				background-color: rgba(0, 0, 255, 0.09);
+				
+				width: 200px;
+			}
+			
+			
+			
+		</style>
+		
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssSandpaper.js">
+		</script>
+	</head>
+	<body>
+		
+		<h1>Blocky Fonts</h1>
+		
+		<p>In IE, this part should have a font that looks blocky.</p>
+		
+		
+		<div class="backgroundFix">
+			<h1>Unblocky font</h1>
+			
+			<p>This text is not blocky because we used cssSandpaper to but in
+			a very light opaque background, rgb(255,255, 255, 0.01)</p>
+		</div>
+		
+	</body>
+</html>

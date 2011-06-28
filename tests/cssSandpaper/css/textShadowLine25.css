@@ -1,5 +1,5 @@
 @import "../../../shared/css/example.css";
-@import "/shared/fonts/LeagueGothic/stylesheet.css";
+@import "../../../shared/fonts/LeagueGothic/stylesheet.css";
 
 body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, blockquote {
 	margin: 0; padding: 0; border: 0;

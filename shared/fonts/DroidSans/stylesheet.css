@@ -1,0 +1,16 @@
+
+@font-face {
+	font-family: 'DroidSans-Bold';
+	src: url('DroidSans-Bold.eot?') format('eot'), 
+	     url('DroidSans-Bold.woff') format('woff'), 
+	     url('DroidSans-Bold.ttf')  format('truetype'),
+	     url('DroidSans-Bold.svg#DroidSans-Bold') format('svg');
+}
+
+@font-face {
+	font-family: 'DroidSans';
+	src: url('DroidSans.eot?') format('eot'), 
+	     url('DroidSans.woff') format('woff'), 
+	     url('DroidSans.ttf')  format('truetype'),
+	     url('DroidSans.svg#DroidSans') format('svg');
+}

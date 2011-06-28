@@ -215,7 +215,6 @@ var cssSandpaper = new function(){
 			}
 		
 		
-		textShadowForMSIE.init()
 	}
     
     me.setBoxShadow = function(obj, value){

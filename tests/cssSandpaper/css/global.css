@@ -1,56 +1,13 @@
-@import "/shared/css/reset.css";
-
-@font-face {
-	font-family: "Droid Sans";
-	src: url("/shared/fonts/DroidSans/DroidSans.eot");
-	src: local("Droid Sans"), local("Droid Sans"),
-		 
-	      url("/shared/fonts/DroidSans/DroidSans.ttf") format("truetype");
-}
-
-/* Bold declaration only for non-IE browsers */
-@font-face {
-	font-family: "Droid Sans";
-	src: local("Droid Sans Bold"), local("Droid Sans-Bold"),
-		
-	      url("../../../shared/fonts/DroidSans/DroidSans-Bold.ttf")
-		format("truetype");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "Droid Sans Mono";
-	src: url("/shared/fonts/DroidSansMono/DroidSansMono.eot");
-	src: local("Droid Sans Mono"),
-		
-	      url("../../../shared/fonts/DroidSansMono/DroidSansMono.ttf")
-		format("truetype");
-}
-
-@font-face {
-	font-family: "Graublau Web";
-	src: url("/shared/fonts/GraublauWeb/GraublauWeb.eot");
-	src: local("Graublau Web"),
-		
-     	  url("../../../shared/fonts/GraublauWeb/GraublauWeb.otf")
-		format("opentype");
-}
-
-@font-face {
-	font-family: "Graublau Web Bold";
-	src: url("../../../shared/fonts/GraublauWeb/GraublauWebBold.eot");
-	src: local("Graublau Web Bold"), local("Graublau Web-Bold"),
-		
-     	  url("../../../shared/fonts/GraublauWeb/GraublauWebBold.otf")
-		format("opentype");
-}
+@import "../../../shared/css/reset.css";
+@import "../../../shared/fonts/DroidSans/stylesheet.css";
+@import "../../../shared/fonts/GraublauWeb/stylesheet.css";
 
 #content  , #sideNav {
 	line-height: 1.5em;
 }
 
 #content {
-	font-family: "Droid Sans", "Arial", "Helvetica", sans-serif;
+	font-family: "DroidSans", "Arial", "Helvetica", sans-serif;
 }
 
 html,body {
@@ -107,7 +64,7 @@ ol li {
 
 /* Generic styles */
 h1,h3 {
-	font-family: "Graublau Web Bold", "Arial Narrow", "Helvetica",
+	font-family: "GraublauWeb-Bold", "Arial Narrow", "Helvetica",
 		sans-serif;
 }
 
@@ -135,7 +92,7 @@ h1 a:hover {
 }
 
 #content h2 {
-	font-family: "Graublau Web", "Arial Narrow", "Helvetica", sans-serif;
+	font-family: "GraublauWeb", "Arial Narrow", "Helvetica", sans-serif;
 	margin-top: 1em;
 	letter-spacing: normal;
 }
@@ -348,7 +305,7 @@ blockquote:before,blockquote:after,ul#comment_list li.comment div.entry:before,u
 	font-size: 5em;
 	position: absolute;
 	color: #cccccc;
-	font-family: "Graublau Web Bold", "Arial Narrow", "Helvetica",
+	font-family: "GraublauWeb-Bold", "Arial Narrow", "Helvetica",
 		sans-serif !important;
 }
 
@@ -373,7 +330,7 @@ blockquote.shell pre {
 	background-color: black;
 	color: #00ff00;
 	padding: 10px;
-	font-family: "Droid Sans Mono", "Consolas", "Courier New", "Courier",
+	font-family: "DroidSans Mono", "Consolas", "Courier New", "Courier",
 		monospace;
 	border: ridge #cccccc 3px;
 	margin: 0 0 1em 0;
@@ -405,7 +362,7 @@ blockquote.code:before,blockquote.code:after {
 }
 
 blockquote.code pre {
-	font-family: "Droid Sans Mono", "Consolas", "Courier New", "Courier",
+	font-family: "DroidSans Mono", "Consolas", "Courier New", "Courier",
 		monospace;
 	font-size: 0.8em;
 	display: block;
@@ -438,7 +395,7 @@ code {
 }
 
 #head h1,#head h2 {
-	font-family: "Graublau Web Bold", "Arial Narrow", "Helvetica",
+	font-family: "GraublauWeb-Bold", "Arial Narrow", "Helvetica",
 		sans-serif !important;
 	color: #EBE5DE !important;
 	font-size: 2em;
@@ -448,7 +405,7 @@ code {
 }
 
 #head h2 {
-	font-family: "Droid Sans", "Arial Narrow", "Helvetica", sans-serif
+	font-family: "DroidSans", "Arial Narrow", "Helvetica", sans-serif
 		!important;
 	margin-top: .6em;
 	font-size: 0.7em;
@@ -460,7 +417,7 @@ code {
 }
 
 #foot {
-	font-family: "Droid Sans", "Arial Narrow", "Helvetica", sans-serif
+	font-family: "DroidSans", "Arial Narrow", "Helvetica", sans-serif
 		!important;
 	height: 259px;
 	font-size: 0.8em;
@@ -469,7 +426,7 @@ code {
 }
 
 ul#mainMenu {
-	font-family: "Droid Sans", "Arial Narrow", "Helvetica", sans-serif;
+	font-family: "DroidSans", "Arial Narrow", "Helvetica", sans-serif;
 	font-weight: bolder;
 	background: #313131;
 	color: white;
@@ -501,7 +458,7 @@ ul#mainMenu li a:hover {
 #sideNav {
 	width: 10em;
 	/* border-right: 1px solid black; */
-	font-family: "Droid Sans", "Arial", "Helvetica", sans-serif !important;
+	font-family: "DroidSans", "Arial", "Helvetica", sans-serif !important;
 	font-size: .7em;
 	padding-right: 2em;
 	height: 100%;
@@ -576,7 +533,7 @@ ul#comment_list li.comment {
 ul#comment_list li.trackback div.entry {
 	padding-top: 0;
 	padding-bottom: 0;
-	font-family: "Droid Sans", "Arial", "Helvetica", sans-serif;
+	font-family: "DroidSans", "Arial", "Helvetica", sans-serif;
 	font-style: normal;
 	font-size: 0.8em;
 	padding-left: 2em;

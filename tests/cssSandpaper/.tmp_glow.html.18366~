@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>index.html</title>
+	
+    <link rel="stylesheet" type="text/css" href="css/glow.css">
+	
+	<script type="text/javascript" src="../../shared/js/EventHelpers.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+	</script>
+	<script type="text/javascript" src="../../shared/js/cssSandpaper.js">
+	</script>
+  </head>
+  
+  <!--[if lt IE 7 ]> <body class="ie6 ie8down custom"> <![endif]-->
+  <!--[if IE 7 ]>    <body class="ie7 ie8down custom"> <![endif]-->
+  <!--[if IE 8 ]>    <body class="ie8 ie8down custom"> <![endif]-->
+  <!--[if IE 9 ]>    <body class="ie9 custom"> <![endif]-->
+  <!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+  <!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+	<!-- <span style="position: relative;"><h1  style="position: absolute; color: #cccccc; width: 300px; margin-left:  5px; margin-top:  5px; filter: progid:DXImageTransform.Microsoft.Blur(pixelradius=4); background: white; zoom: 1">Text Shadow</h1><h1 style="position: relative; width: 300px">Text Shadow</h1></span>
+	-->
+	
+	<div id="sky" class="textShadowTest">
+		<p>This is dark text on a dark background.</p>
+	</div>
+	
+	<div id="clouds"  class="textShadowTest">
+		<p>This is white text on a light background.</p>
+	</div>
+  </body>
+</html>

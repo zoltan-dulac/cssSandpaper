@@ -1,0 +1,23 @@
+@import "reset.css";
+
+
+#exampleBlurb {
+    background: none repeat scroll 0 0 #2F2626 !important;
+    color: white !important;
+    font: 14px Georgia,Serif !important;
+    
+    position: relative;
+    text-align: justify !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+	
+}
+
+#exampleBlurb p {
+    
+    padding: 0 10px;
+}
+
+#exampleBlurb a {
+    color: #CCCCFF;
+}

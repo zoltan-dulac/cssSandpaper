@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Simple Translation Example</title>
+		
+		
+		<link rel="stylesheet" type="text/css" href="css/simpleTranslate.css" />
+		
+		
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssSandpaper.js">
+		</script>
+		
+	</head>
+	<body>
+		
+		<div id="o1">
+			No translation
+		</div>
+		
+		<div id="o2">
+			-sand-transform: translate(200px, 0);
+		</div>
+		
+		<div id="o3">
+			-sand-transform: rotate(45deg);
+		</div>
+		
+		<div id="o4">
+			-sand-transform: rotate(45deg) translate(200px, 0);
+		</div>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		
+		
+		<title>cssSandpaper Animated Gradient Example</title>
+		
+		<style type="text/css">
+		<!--
+		
+			body {
+				margin: 0;
+			}
+			
+			#sky {
+				font-size: 2em;
+				font-weight: bold;
+				font-family: "Arial", sans-serif;
+				border: 2px dashed orange;
+				width: 20em;
+				margin: 3em auto;
+				padding: 1em;
+				color: white;
+				
+			}
+			
+			#hook-just-in-case {
+				opacity: 0.7;
+				position: absolute;
+				padding: 0.7em;
+				top: 0;
+				left: 0;
+	            background: #2f2626 !important;
+	            text-align: justify  !important;
+	            color:white !important;
+	            font: 14px Georgia, Serif !important;
+	            position: relative;
+	            zoom: 1;
+	            
+	            z-index: 10000 !important;
+			}
+			
+			#hook-just-in-case p {
+				line-height: 2.4em;
+			}
+			
+					
+			a {
+				color: #ccccff;
+			}
+
+		-->
+		</style>
+		
+		
+		
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssSandpaper.js">
+		</script>
+		
+		<script type="text/javascript" src="js/gradient.js">
+		</script>
+	</head>
+	<body class="cssSandpaper-IEuseGradientFilter">
+		<div id="hook-just-in-case">
+			This example uses cssSandpaper to manipulate the 
+			<code>gradient</code> property.</strong> IE9 uses the <code>Gradient</code> Visual Filter to polyfill
+			<code>-sand-gradient()</code> because don't work well at all in IE9 using the <code>canvas</code>
+			polyfill.  This is done by making the <code>&lt;body&gt;</code> tag a member of the CSS class <code>cssSandpaper-IEuseGradientFilter</code>
+			<a href="http://www.useragentman.com/blog/2010/04/05/cross-browser-animated-css-transforms-even-in-ie/">Back to User Agent Man CSS3 Animation article </a>
+		</div>
+		
+		
+		<div id="sky">
+			Just keep looking at this space.  You'll see the colours in this
+			box will be gradually changing.  No, it isn't the mushrooms you
+			had in the omlette this morning.  It's cssSandpaper that is doing
+			this. Don't be alarmed. Keep calm and carry on. 
+		</div>
+	</body>
+</html>

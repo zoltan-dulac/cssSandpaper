@@ -11,7 +11,7 @@
   
   <link href="css/textShadowCss3Info.css" type="text/css" rel="stylesheet" />
   
-  <script type="text/javascript" src="../../shared/js/EventHelpers.js">
+  <script type="text/javascript" src="/shared/js/helpers.js">
 	</script>
 	<script type="text/javascript" src="../../shared/js/asamuzak.jp/textshadow.js">
 	</script>

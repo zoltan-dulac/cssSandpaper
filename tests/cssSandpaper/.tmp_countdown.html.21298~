@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		
+		
+		<title>cssSandpaper Animated Countdown Example</title>
+		
+		<style type="text/css">
+		<!--
+			body {
+				margin: 0;
+				overflow: hidden;
+			}
+			
+			#testPattern {
+				
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			#testPattern img {
+				display: block;
+				margin: 0 auto;
+			}
+		
+			#countdown {
+				font-family: "Arial", sans-serif;
+				font-size: 40em;
+				font-weight: bold;
+				text-align: center;
+				background: none;
+				position: relative;
+				
+				top: -50px;
+			}
+			
+			#hook-just-in-case {
+				opacity: 0.7;
+				position: absolute;
+				padding: 0.7em;
+				top: 0;
+				left: 0;
+	            background: #2f2626 !important;
+	            text-align: justify  !important;
+	            color:white !important;
+	            font: 14px Georgia, Serif !important;
+	            position: relative;
+	            zoom: 1;
+	            
+	            z-index: 10000 !important;
+			}
+			
+			#hook-just-in-case p {
+				line-height: 2.4em;
+			}
+			
+					
+			a {
+				color: #ccccff;
+			}
+
+		-->
+		</style>
+		
+		
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssQuery-p.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/jcoglan.com/sylvester.js">
+		</script>
+		<script type="text/javascript" src="../../shared/js/cssSandpaper.js">
+		</script>
+		
+		
+	
+		<script type="text/javascript" src="js/countdown.js">
+		</script>
+		
+		
+		
+	</head>
+	<body>
+		
+		<div id="hook-just-in-case">
+			Countdown example using a both the <code>transform</code> (with 
+			<code>scale()</code> and <code>rotate()</code> functions) and 
+			<code>opacity</code> properties.  Note that this text is in a
+			container using the <code>opacity</code> property <strong>and it
+			is respected by Internet Explorer.</strong> 
+			<a href="http://www.useragentman.com/blog/2010/04/05/cross-browser-animated-css-transforms-even-in-ie/">Back to User Agent Man CSS3 Animation article </a>
+		</div>
+		
+		<div id="testPattern">
+		<img src="images/testPattern.png" />
+		</div>
+		
+		<div id="countdown">
+			10
+		</div>
+			
+	</body>
+</html>
