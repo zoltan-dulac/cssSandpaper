@@ -213,7 +213,7 @@ var cssSandpaper = new function(){
 		            }
 				}
 			}
-		
+		textShadowForMSIE.init()
 		
 	}
     
