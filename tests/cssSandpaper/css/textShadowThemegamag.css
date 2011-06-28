@@ -5,6 +5,7 @@ div{ padding : 1px;	font-size : 44px;}
 
 p {
 	margin: 44px 0 !important;
+	line-height: 1em;
 }
 
 /*********Glowing Link ***********/
