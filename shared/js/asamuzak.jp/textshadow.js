@@ -383,8 +383,8 @@ var textShadowForMSIE = new function (){
                     	
                         var pxRad = convUnitToPx(tObj.shadow[i].z, tObj.elm);
                         
-                        var xPos = convUnitToPx(tObj.shadow[i].x, tObj.elm) - pxRad + convUnitToPx(getCompStyle(tObj.elm).paddingLeft, tObj.elm);
-                        var yPos = convUnitToPx(tObj.shadow[i].y, tObj.elm) - pxRad + convUnitToPx(getCompStyle(tObj.elm).paddingTop, tObj.elm);
+                        var xPos = convUnitToPx(tObj.shadow[i].x, tObj.elm) - pxRad + convUnitToPx(getCompStyle(tObj.elm).paddingLeft, tObj.elm) - convUnitToPx(getCompStyle(tObj.elm).borderTopLeftRadius, tObj.elm)/2;
+                        var yPos = convUnitToPx(tObj.shadow[i].y, tObj.elm) - pxRad + convUnitToPx(getCompStyle(tObj.elm).paddingTop, tObj.elm) ;
                         /* if (ieVersion == 7 && pxRad == 0) {
                             xPos >= 0 && (xPos -= 1);
                             yPos >= 0 && (yPos -= 1);
