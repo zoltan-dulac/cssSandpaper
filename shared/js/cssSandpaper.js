@@ -524,10 +524,12 @@ var cssSandpaper = new function(){
                 sheetCssText = StringHelpers.uncommentHTML(node.innerHTML); //does not work with inline styles because IE doesn't allow you to get the text content of a STYLE element
                 break;
             case 'link':
-                
-                var xhr = XMLHelpers.getXMLHttpRequest(node.href, null, "GET", null, false);
-                sheetCssText = xhr.responseText;
-                
+                try {
+	                var xhr = XMLHelpers.getXMLHttpRequest(node.href, null, "GET", null, false);
+	                sheetCssText = xhr.responseText;
+                } catch (ex) {
+                	sheetCssText = "";
+                }
                 break;
         }
         
