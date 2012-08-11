@@ -13,7 +13,7 @@ body {
 	width: 400px;
 	height: 100px;
 	padding: 10px;
-	-sand-transform: skew(45deg, 0deg);
+	-sand-transform: skewX(45deg);
 	background-color: #ffffcc;
 }
 
@@ -25,7 +25,7 @@ body {
 	width: 200px;
 	height: 302px;
 	padding: 20px;
-	-sand-transform:  skew(-17deg, 45deg) rotate(-125deg);
+	-sand-transform:  skewX(-17deg) skewY(45deg) rotate(-125deg);
 	background-image: gradient(linear, center top, center bottom, from(#ffffff),
 		 to(#ccccff));
 }
@@ -48,7 +48,7 @@ body {
 	background-color: blue;
 	color: white;
 	font-weight: bold;
-	-sand-transform: rotate(30deg) skew(20deg, 20deg);
+	-sand-transform: rotate(30deg) skewX(20deg) skewY(20deg);
 	width: 200px;
 	height: 200px;
 	position: relative;

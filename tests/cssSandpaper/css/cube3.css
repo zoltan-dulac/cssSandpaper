@@ -10,13 +10,13 @@
 body{
 	font-size: 0.95em;
 	letter-spacing: 1px;
-	font-family: "DroidSans", sans-serif;
+	font-family: "Droid Sans", sans-serif;
 	background: black;
 	color: white;
 }
 
 h1 {
-	font-family: "GraublauWeb-Bold", sans-serif;
+	font-family: "Graublau Web Bold", sans-serif;
 	font-weight: bold;	
 }
 
@@ -52,7 +52,7 @@ h1 {
 	left: -1.5em;
 	width: 20em;
 	/* border: solid 1px white; */
-	-sand-transform: rotate(-30deg) skew(-30deg, 0deg);
+	-sand-transform: rotate(-30deg) skewX(-30deg);
 	line-height: 1.4em;
 }
 
@@ -60,7 +60,7 @@ h1 {
 	top: -16em;
 	right: -1.5em;
 	width: 20em;
-	-sand-transform: rotate(30deg) skew(30deg, 0deg);
+	-sand-transform: rotate(30deg) skewX(30deg);
 	line-height: 1.4em;
 	text-align: right;	
 }
@@ -119,20 +119,21 @@ h1 {
 }
  
 .leftFace {
-	-sand-transform: skew(0deg, 30deg);
+	-sand-transform: skewY(30deg);
 	background-image: -sand-gradient(linear, center top, center bottom, from(#EBE5DE),
 		to(#ea9b3d) );
 }
 
 .rightFace {
-	-sand-transform: skew(0deg, -30deg);
+	-sand-transform: skewY( -30deg);
+	
 	background-image: -sand-gradient(linear, center top, center bottom, from(#EBE5DE),
 		to(#ea9b3d) );
 	left: 20em;
 }
 
 .topFace {
-	-sand-transform: rotate(60deg) skew(0deg, -30deg) scale(1, 1.15);
+	-sand-transform: rotate(60deg) skewY(-30deg) scale(1, 1.15);
 	top: -15.75em;
 	left: 9.95em;	
 }
