@@ -24,7 +24,7 @@ var test1 = new function () {
 	me.doRotationTestTimeout = function(deg, step) {
 		if ( (step > 0 && deg <= 10) || (step < 0 && deg >= -10))  {
 			cssSandpaper.setTransform(testSubject, 
-				StringHelpers.sprintf('skew(%ddeg, 0deg) rotate(%ddeg)', deg, deg*2));
+				StringHelpers.sprintf('skew(%ddeg) rotate(%ddeg)', deg, deg*2));
 			setTimeout(
 				StringHelpers.sprintf("test1.doRotationTestTimeout(%d, %d)", deg + step, step),
 				10
