@@ -71,11 +71,12 @@ var cssSandpaper = new function(){
         
         indexRules();
         
-		setChromaOverrides();
-		fixTransforms();
-		
+	setChromaOverrides();
+	fixTransforms();
+	
+	if (window.textShadowForMSIE) {
 		fixTextShadows();
-		
+	}
         
         fixBoxShadow();
         fixLinearGradients();
